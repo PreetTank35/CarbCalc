@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173d30">
+  <title>Ways to Heal &amp; Plant — CarbCalc</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="heal">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="CarbCalc home">
+      <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
+      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+    </a>
+
+    <nav class="page-nav" aria-label="Primary pages">
+      <a href="./index.html">Welcome</a>
+      <a href="./dashboard.html">Today's Rhythm</a>
+      <a href="./heal.html" class="active">Heal &amp; Plant</a>
+      <a href="./circle.html">Circle &amp; Pulse</a>
+      <a href="./studio.html">Solar &amp; Vault</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" title="Download Android APK"><span>⬇</span><span class="apk-btn-text">Get APK</span></a>
+      <button class="profile-pill" id="profilePillBtn" type="button"><span class="profile-avatar" id="headerAvatar">A</span><span class="profile-meta"><strong id="headerUserName">Atharv</strong><small id="headerScoreMini">784 pts</small></span></button>
+      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges"><span class="bell-halo" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg><span class="bell-badge" id="bellBadge">3</span></button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg></button>
+      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button"><span class="menu-lines"><span></span><span></span></span><span class="menu-label">Menu</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-section section-shell">
+      <div class="page-top-banner">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> 02 — WAYS TO BALANCE &amp; HEAL</div>
+          <h1>Turn your footprint <em>into living shade.</em></h1>
+        </div>
+        <p class="page-top-note">Pick a daily healing action or start a real native tree check-in that grows with you week by week.</p>
+      </div>
+
+      <div class="heal-grid">
+        <div class="tree-studio-card">
+          <div class="choice-card-top">
+            <span>FEATURED CHALLENGE · PLANT A NATIVE TREE</span>
+            <span class="live-tag"><span></span> +50 SCORE · ~22 KG CO₂/YR</span>
+          </div>
+
+          <div class="tree-species-row">
+            <label class="field">
+              <span>Choose native species</span>
+              <select id="treeSpeciesSelect">
+                <option value="neem">Neem · Azadirachta indica (~22 kg/yr)</option>
+                <option value="peepal">Peepal · Ficus religiosa (~28 kg/yr)</option>
+                <option value="banyan">Banyan · Ficus benghalensis (~32 kg/yr)</option>
+                <option value="mango">Desi Mango · Mangifera indica (~20 kg/yr)</option>
+                <option value="bamboo">Bamboo Clump · Dendrocalamus (~40 kg/yr)</option>
+              </select>
+            </label>
+            <div class="tree-streak-box">
+              <span>Weekly check-ins</span>
+              <strong id="treeStreakCount">0 weeks</strong>
+            </div>
+          </div>
+
+          <div class="tree-upload-zone">
+            <canvas id="treeCanvas" width="560" height="240" class="tree-preview-canvas"></canvas>
+            <div class="tree-canvas-overlay" id="treeCanvasPlaceholder">
+              <span class="tree-icon">🌱</span>
+              <p>Take or upload a real photo of your planted sapling</p>
+              <button type="button" class="button button-primary button-small" id="uploadTreePhotoBtn">Choose / Take Photo</button>
+              <input type="file" id="treePhotoInput" accept="image/*" capture="environment" hidden>
+            </div>
+          </div>
+
+          <div class="tree-demo-presets">
+            <span>Try quick photo test:</span>
+            <button type="button" class="preset-chip" data-tree-preset="sapling">Week 1 Sapling</button>
+            <button type="button" class="preset-chip" data-tree-preset="growth">Week 2 Growth</button>
+            <button type="button" class="preset-chip" data-tree-preset="fake">Flat Screen / Fake</button>
+          </div>
+
+          <div class="tree-verification-result" id="treeVerificationResult" hidden>
+            <div class="verify-status-head"><strong id="verifyHeadline">Sapling verified</strong><span id="verifyScoreTag">+50 pts</span></div>
+            <p id="verifyDetail"></p>
+            <div class="optical-bars">
+              <span>Foliage greenness: <b id="optGreenPct">0%</b></span>
+              <span>Natural soil base: <b id="optSoilPct">0%</b></span>
+              <span>Natural texture: <b id="optTexturePct">0%</b></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="heal-actions-card">
+          <div class="heal-actions-head">
+            <div><span class="eyebrow">TODAY'S ACTIONS</span><h3>Small shifts you can do right now</h3></div>
+            <strong class="heal-done-counter"><span id="healDoneCount">0</span> / 5</strong>
+          </div>
+
+          <div class="heal-list">
+            <label class="heal-item"><input type="checkbox" data-heal="ac_fan" data-pts="20" data-kg="1.01"><span class="mission-check"></span><span class="heal-text"><b>Use ceiling fan instead of 1 hr AC</b><small>Saves ~1.01 kg CO₂ per hour on the Indian grid</small></span><span class="heal-pts">+20 pts</span></label>
+            <label class="heal-item"><input type="checkbox" data-heal="local_plate" data-pts="15" data-kg="0.38"><span class="mission-check"></span><span class="heal-text"><b>Choose local seasonal produce, zero leftovers</b><small>Cuts food-mile &amp; household waste emissions</small></span><span class="heal-pts">+15 pts</span></label>
+            <label class="heal-item"><input type="checkbox" data-heal="bus_share" data-pts="25" data-kg="0.55"><span class="mission-check"></span><span class="heal-text"><b>Take the campus bus, metro, or share your ride</b><small>Cuts per-person commute CO₂ by up to 65%</small></span><span class="heal-pts">+25 pts</span></label>
+            <label class="heal-item"><input type="checkbox" data-heal="sort_waste" data-pts="15" data-kg="0.15"><span class="mission-check"></span><span class="heal-text"><b>Separate wet kitchen scraps from dry recyclables</b><small>Stops wet waste from turning into landfill methane</small></span><span class="heal-pts">+15 pts</span></label>
+            <label class="heal-item"><input type="checkbox" data-heal="mindful_ai" data-pts="10" data-kg="0.06"><span class="mission-check"></span><span class="heal-text"><b>Batch AI questions &amp; trim auto-play HD video</b><small>Reduces distant data center cooling &amp; server load</small></span><span class="heal-pts">+10 pts</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="./index.html"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span><span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span></a>
+      <p>Live lightly. Leave more room to grow.</p>
+      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
+    <a href="./index.html"><span>🌱</span>Home</a>
+    <a href="./dashboard.html"><span>📊</span>Rhythm</a>
+    <a href="./heal.html" class="active"><span>🌳</span>Heal</a>
+    <a href="./circle.html"><span>🤝</span>Circle</a>
+    <a href="./studio.html"><span>☀️</span>Studio</a>
+  </nav>
+
+  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true" aria-label="Navigation and Android App">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span><h3>CarbCalc Pages</h3></div><button class="drawer-close" id="menuDrawerClose" type="button">×</button></div>
+      <div class="drawer-nav-cards">
+        <a href="./index.html" class="drawer-nav-link"><span>01 · Welcome &amp; Account</span><span>→</span></a>
+        <a href="./dashboard.html" class="drawer-nav-link"><span>02 · Today's Rhythm &amp; Score</span><span>→</span></a>
+        <a href="./heal.html" class="drawer-nav-link active"><span>03 · Ways to Heal &amp; Plant a Tree</span><span>→</span></a>
+        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth Pulse</span><span>→</span></a>
+        <a href="./studio.html" class="drawer-nav-link"><span>05 · Solar Savings, Research Vault &amp; Journal</span><span>→</span></a>
+      </div>
+      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span><p>Download the Capacitor-packaged APK build directly to your phone.</p><a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a></div>
+      <div class="drawer-apk-box"><span class="eyebrow">AMBIENT NUDGES</span><p>Preview the gentle anti-doomscroll reminder overlay.</p><button type="button" class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay ✦</button></div>
+    </aside>
+  </div>
+
+  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true" aria-label="Gentle notifications">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span><h3>Eco Nudges</h3></div><button class="drawer-close" id="nudgeDrawerClose" type="button">×</button></div>
+      <div class="nudge-list" id="nudgeList"></div>
+      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small" id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
+    </aside>
+  </div>
+
+  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle" hidden>
+    <div class="ambient-card">
+      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
+      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
+      <p>On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging — reminding us that small local courage changes national history.</p>
+      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes of daylight (+15 Eco Score).</div>
+      <div class="ambient-actions"><button type="button" class="button button-primary button-small" id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button" id="ambientDismissBtn">Maybe later <span>→</span></button></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>

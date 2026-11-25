@@ -1,0 +1,12 @@
+{
+  "name": "carbcalc-eco-companion",
+  "version": "2.0.0",
+  "description": "CarbCalc — Student & Personal Eco Companion (Web Demo + Capacitor Android Ready)",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "cap:sync": "npx cap sync android",
+    "cap:open": "npx cap open android"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

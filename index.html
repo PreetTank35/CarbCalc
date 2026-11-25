@@ -2,238 +2,222 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#173d30">
-  <meta name="description" content="CarbCalc — a student-first carbon footprint calculator and environmental field journal.">
-  <title>CarbCalc — Make your impact visible</title>
+  <meta name="description" content="CarbCalc — your effortless eco companion for daily footprints, gentle nudges, and healing actions.">
+  <title>CarbCalc — Live Lightly, See Clearly</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body data-page="welcome">
   <div class="grain" aria-hidden="true"></div>
+
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="CarbCalc home">
-      <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
-      <span class="brand-name">carb<span>calc</span><small>STUDENT ECO LEDGER</small></span>
+    <a class="brand" href="./index.html" aria-label="CarbCalc home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/>
+          <path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/>
+        </svg>
+      </span>
+      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
     </a>
-    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
-      <a href="#calculator">Calculator</a>
-      <a href="#choice-lab">Choice lab</a>
-      <a href="#field-notes">Field journal</a>
+
+    <nav class="page-nav" aria-label="Primary pages">
+      <a href="./index.html" class="active">Welcome</a>
+      <a href="./dashboard.html">Today's Rhythm</a>
+      <a href="./heal.html">Heal &amp; Plant</a>
+      <a href="./circle.html">Circle &amp; Pulse</a>
+      <a href="./studio.html">Solar &amp; Vault</a>
     </nav>
+
     <div class="header-actions">
-      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg></button>
-      <button class="button button-dark button-small" id="installBtn" type="button" hidden>Install app <span>↗</span></button>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" type="button"><span></span><span></span></button>
+      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" title="Download Android APK">
+        <span>⬇</span><span class="apk-btn-text">Get APK</span>
+      </a>
+      <button class="profile-pill" id="profilePillBtn" type="button" title="Switch account mode">
+        <span class="profile-avatar" id="headerAvatar">A</span>
+        <span class="profile-meta">
+          <strong id="headerUserName">Atharv</strong>
+          <small id="headerScoreMini">784 pts</small>
+        </span>
+      </button>
+      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges">
+        <span class="bell-halo" aria-hidden="true"></span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg>
+        <span class="bell-badge" id="bellBadge">3</span>
+      </button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg>
+      </button>
+      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button">
+        <span class="menu-lines"><span></span><span></span></span>
+        <span class="menu-label">Menu</span>
+      </button>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> A SMALLER FOOTPRINT STARTS HERE</div>
-        <h1>Make your<br><em>impact visible.</em></h1>
-        <p class="hero-lede">Your everyday choices leave a mark. CarbCalc turns the routines of student life into clear numbers, useful experiments, and better habits.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#calculator">Calculate my footprint <span>↘</span></a>
-          <button class="text-button" type="button" id="howItWorks">How it works <span>→</span></button>
+  <main>
+    <section class="hero-bento section-shell">
+      <!-- Left Full-Height Neumorphic Card -->
+      <div class="hero-main-card">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> EFFORTLESS DAILY CLIMATE CARE</div>
+          <h1>Make your <em>impact visible.</em></h1>
+          <p class="hero-lede">Most calculators wait for you to type every number by hand. CarbCalc quietly senses your daily rhythm, turns it into clarity, and invites small acts that heal.</p>
         </div>
-        <div class="hero-meta"><span class="meta-leaf">✳</span> Built for student life · Designed to stay lightweight</div>
-      </div>
-      <div class="hero-art" aria-label="Illustration of a leaf growing from a circular earth motif">
-        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
-        <div class="art-sun"></div>
-        <div class="art-earth"><div class="earth-land land-one"></div><div class="earth-land land-two"></div><div class="earth-land land-three"></div><div class="earth-shine"></div></div>
-        <svg class="hero-sprout" viewBox="0 0 300 330" fill="none" aria-hidden="true">
-          <path d="M147 293c-8-48-5-94 13-137" stroke="#244d37" stroke-width="4" stroke-linecap="round"/>
-          <path d="M158 164c-45-3-76-28-73-74 39-4 78 17 73 74Z" fill="#759D69" stroke="#244d37" stroke-width="3"/>
-          <path d="M158 164c7-47 34-77 79-72 2 41-25 76-79 72Z" fill="#B4C99B" stroke="#244d37" stroke-width="3"/>
-          <path d="M157 159c-20-27-38-43-62-57M162 155c22-22 43-39 65-49" stroke="#244d37" stroke-width="2" stroke-linecap="round"/>
-          <path d="M143 294c-14-20-31-26-49-22 8 22 25 33 49 22ZM150 294c13-22 32-29 52-23-7 23-25 34-52 23Z" fill="#D1DDBF" stroke="#244d37" stroke-width="2"/>
-          <path d="M147 293c0 12-1 20-3 28" stroke="#244d37" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <div class="art-label label-top"><span class="label-icon">↗</span><span>SMALL STEPS<br><b>REAL CHANGE</b></span></div>
-        <div class="art-label label-bottom"><span class="mini-pulse"></span> YOUR DAILY ECO CHECK-IN</div>
-        <div class="art-caption">LIVE LIGHTLY<br><span>LEAVE MORE ROOM TO GROW</span></div>
-      </div>
-      <div class="hero-bottomline"><span>01 / MEASURE</span><span class="line"></span><span>02 / EXPERIMENT</span><span class="line"></span><span>03 / IMPROVE</span></div>
-    </section>
 
-    <section class="intro-band">
-      <div class="section-shell intro-inner">
-        <p>THE IDEA</p>
-        <h2>Climate action feels less abstract<br>when you can <em>see your part in it.</em></h2>
-        <div class="intro-note">No account. No tracking. Just a clear model, practical nudges, and data you keep on your device.</div>
-      </div>
-    </section>
+        <div class="neu-inset-panel">
+          <div class="entry-primary-row">
+            <button class="button button-primary" id="enterGeneralBtn" type="button">Continue with General Account <span>→</span></button>
+            <button class="text-button" id="toggleStudentOption" type="button" aria-expanded="false">Are you a student? <span>↘</span></button>
+          </div>
 
-    <section class="section-shell calculator-section" id="calculator">
-      <div class="section-heading">
-        <div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR PERSONAL ECO LEDGER</div><h2>Start with the<br><em>everyday.</em></h2></div>
-        <div class="section-heading-note">A simple activity-based estimate of three areas in the CarbCalc project model: petrol use, shared electricity, and unsegregated waste.</div>
-      </div>
-
-      <div class="calculator-layout">
-        <div class="input-panel">
-          <div class="panel-topline"><span>01 — YOUR ROUTINE</span><span class="sample-tag">DEMO VALUES · EDIT THESE</span></div>
-          <div class="input-group transport-group">
-            <div class="input-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16h14l-1.6-6.2A2.5 2.5 0 0 0 15 8H9a2.5 2.5 0 0 0-2.4 1.8L5 16Z"/><path d="M4 16v2.5M20 16v2.5M7 18.5h10M7.5 11h9M8 8l1-2h6l1 2"/><circle cx="7.5" cy="16.5" r="1"/><circle cx="16.5" cy="16.5" r="1"/></svg></div>
-            <div class="input-copy"><h3>Getting around</h3><p>Petrol commute · round trip per day</p></div>
-            <label class="switch-label"><input type="checkbox" id="noPetrol"><span class="switch"></span><small>No petrol commute</small></label>
-            <div class="field-grid transport-fields">
-              <label class="field"><span>Distance <small>KM / DAY</small></span><input id="commuteKm" type="number" min="0" max="500" step="0.5" value="12"><small class="field-hint">Total daily distance, both ways</small></label>
-              <label class="field"><span>Fuel efficiency <small>KM / L</small></span><input id="mileage" type="number" min="1" max="200" step="0.5" value="45"><small class="field-hint">Your vehicle's mileage</small></label>
-              <label class="field field-wide"><span>People sharing the ride <small>PERSON / VEHICLE</small></span><input id="passengers" type="number" min="1" max="12" step="1" value="1"><small class="field-hint">Emissions are divided equally among occupants</small></label>
+          <div class="student-connector" id="studentConnector" hidden>
+            <div class="student-fields">
+              <label class="field">
+                <span>Your name</span>
+                <input id="loginNameInput" type="text" maxlength="40" value="Atharv" placeholder="Enter your name">
+              </label>
+              <label class="field">
+                <span>Institution group</span>
+                <select id="institutionSelect">
+                  <option value="MITAOE Alandi · EVS IT SY-C">MIT Academy of Engineering · EVS IT SY-C</option>
+                  <option value="Pune Eco-Campus Collective">Pune Eco-Campus Collective</option>
+                  <option value="National Green Youth Circle">National Green Youth Circle</option>
+                </select>
+              </label>
+            </div>
+            <div class="student-connector-foot">
+              <span class="cohort-note">Connects your Eco Score to your institution's EVS benchmark (750 pts) for peer verification.</span>
+              <button class="button button-primary button-small" id="enterStudentBtn" type="button">Join Student Group <span>→</span></button>
             </div>
           </div>
-          <div class="input-divider"></div>
-          <div class="input-group">
-            <div class="input-icon icon-sun"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
-            <div class="input-copy"><h3>Power at home / hostel</h3><p>Monthly electricity shared by your room</p></div>
-            <div class="field-grid">
-              <label class="field"><span>Monthly usage <small>KWH / MONTH</small></span><input id="electricityKwh" type="number" min="0" max="100000" step="1" value="120"></label>
-              <label class="field"><span>People sharing <small>PERSONS</small></span><input id="occupants" type="number" min="1" max="50" step="1" value="3"></label>
+        </div>
+
+        <div class="apk-download-card">
+          <div class="apk-info">
+            <div class="apk-icon-well" aria-hidden="true">📱</div>
+            <div>
+              <b>CarbCalc Android App (Capacitor Ready)</b>
+              <small>Install directly on Android for offline eco tracking &amp; gentle nudges</small>
             </div>
           </div>
-          <div class="input-divider"></div>
-          <div class="input-group">
-            <div class="input-icon icon-waste"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13M10 10v7m4-7v7"/><path d="M4 7h16"/></svg></div>
-            <div class="input-copy"><h3>Everyday waste</h3><p>Unsegregated solid waste generated per day</p></div>
-            <label class="field waste-field"><span>Waste <small>KG / DAY</small></span><input id="wasteKg" type="number" min="0" max="100" step="0.05" value="0.25"></label>
+          <a class="button button-neu button-small" id="heroApkBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Install APK <span>↓</span></a>
+        </div>
+
+        <div class="hero-fact-grid">
+          <div class="fact-tile"><strong>0.675 kg</strong><span>CEA 2026 India grid CO₂/kWh</span></div>
+          <div class="fact-tile"><strong>22–40 kg</strong><span>Native Neem/Bamboo CO₂/yr</span></div>
+          <div class="fact-tile"><strong>14g vs 66g</strong><span>Phone charge vs 30 AI prompts</span></div>
+          <div class="fact-tile"><strong>95% less</strong><span>Methane on segregated waste</span></div>
+        </div>
+      </div>
+
+      <!-- Right Full-Height Neumorphic Visual & Launcher Card -->
+      <div class="hero-visual-card">
+        <div class="hero-orb-stage" aria-label="Illustration of a leaf growing from a circular earth motif">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="art-sun"></div>
+          <div class="art-earth">
+            <div class="earth-land land-one"></div>
+            <div class="earth-land land-two"></div>
+            <div class="earth-land land-three"></div>
+            <div class="earth-shine"></div>
           </div>
-          <div class="input-footer"><span><span class="lock-dot">●</span> Your entries stay on this device</span><button id="resetInputs" class="reset-button" type="button">Reset demo values ↺</button></div>
+          <svg class="hero-sprout" viewBox="0 0 300 330" fill="none" aria-hidden="true">
+            <path d="M147 293c-8-48-5-94 13-137" stroke="#244d37" stroke-width="4" stroke-linecap="round"/>
+            <path d="M158 164c-45-3-76-28-73-74 39-4 78 17 73 74Z" fill="#759D69" stroke="#244d37" stroke-width="3"/>
+            <path d="M158 164c7-47 34-77 79-72 2 41-25 76-79 72Z" fill="#B4C99B" stroke="#244d37" stroke-width="3"/>
+            <path d="M157 159c-20-27-38-43-62-57M162 155c22-22 43-39 65-49" stroke="#244d37" stroke-width="2" stroke-linecap="round"/>
+            <path d="M143 294c-14-20-31-26-49-22 8 22 25 33 49 22ZM150 294c13-22 32-29 52-23-7 23-25 34-52 23Z" fill="#D1DDBF" stroke="#244d37" stroke-width="2"/>
+            <path d="M147 293c0 12-1 20-3 28" stroke="#244d37" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="art-label label-top"><span class="label-icon">↗</span><span>SMALL STEPS<br><b>REAL CHANGE</b></span></div>
+          <div class="art-label label-bottom"><span class="mini-pulse"></span> AUTO-SENSE &amp; HEAL</div>
         </div>
 
-        <aside class="result-panel" aria-live="polite">
-          <div class="result-orbit result-orbit-a"></div><div class="result-orbit result-orbit-b"></div>
-          <div class="result-head"><span>TODAY'S ESTIMATE</span><span class="result-leaf">✳</span></div>
-          <div class="result-number"><strong id="dailyTotal">1.87</strong><span>kg CO₂<br>per day</span></div>
-          <div class="status-row"><span class="status-dot" id="statusDot"></span><span id="statusLabel">GREEN ZONE</span><span class="status-context" id="statusContext">Project guide band</span></div>
-          <div class="result-rule"></div>
-          <div class="projection-row"><span>30-day projection</span><strong id="monthlyTotal">56.10 <small>kg CO₂</small></strong></div>
-          <div class="breakdown-title"><span>WHERE IT COMES FROM</span><button type="button" class="tiny-link" id="formulaOpen">View formulas ↗</button></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Petrol commute</span><strong id="transportValue">0.62 kg</strong></div><div class="bar-track"><span id="transportBar" class="bar-fill fill-transport"></span></div></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Electricity</span><strong id="electricityValue">1.09 kg</strong></div><div class="bar-track"><span id="electricityBar" class="bar-fill fill-electricity"></span></div></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Waste</span><strong id="wasteValue">0.16 kg</strong></div><div class="bar-track"><span id="wasteBar" class="bar-fill fill-waste"></span></div></div>
-          <button class="button button-light result-save" id="saveSnapshot" type="button">Save today's snapshot <span>＋</span></button>
-          <p class="result-disclaimer">An estimate of the activities above — not a full life-cycle footprint.</p>
-        </aside>
-      </div>
-      <div class="model-note"><span class="note-mark">i</span><p><b>About this model.</b> Starter factors and the Green / Intermediate / Dark bands follow the values in the supplied project presentation script. They are demonstration assumptions, not a verified live emissions database or an official rating. Check and cite locally accepted factors before using results for formal reporting.</p></div>
-    </section>
-
-    <section class="choice-section" id="choice-lab">
-      <div class="section-shell choice-layout">
-        <div class="choice-copy">
-          <div class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> 02 — THE CHOICE LAB</div>
-          <h2>What if you<br><em>changed one thing?</em></h2>
-          <p>Small changes are easier to test than vague promises. Try a reduction in your petrol commute and see how the model responds.</p>
-          <div class="choice-prompt"><span class="prompt-icon">✳</span><span>EXPERIMENT, DON'T GUESS</span></div>
-        </div>
-        <div class="choice-card">
-          <div class="choice-card-top"><span>COMMUTE EXPERIMENT</span><span class="live-tag"><span></span> LIVE SIMULATION</span></div>
-          <div class="choice-slider-head"><label for="reductionSlider">Reduce petrol commute by</label><strong id="reductionPercent">25<span>%</span></strong></div>
-          <input id="reductionSlider" class="range-slider" type="range" min="0" max="100" step="5" value="25">
-          <div class="range-labels"><span>NO CHANGE</span><span>FULL SWITCH</span></div>
-          <div class="simulation-result">
-            <div><span class="sim-label">CURRENT DAILY TOTAL</span><strong id="simCurrent">1.87 <small>kg</small></strong></div>
-            <div class="sim-arrow">→</div>
-            <div><span class="sim-label">AFTER YOUR CHANGE</span><strong id="simAfter">1.72 <small>kg</small></strong></div>
-          </div>
-          <div class="saving-strip"><div class="saving-icon">↘</div><div><span>Potential reduction</span><strong id="simSaving">0.16 kg CO₂ / day</strong></div><small id="simMonthlySaving">4.66 kg over 30 days</small></div>
-          <p class="sim-footnote">Illustrative scenario only. It assumes the selected share of petrol commuting is avoided; actual travel choices and emissions may differ.</p>
+        <div class="module-launcher-grid">
+          <a href="./dashboard.html" class="module-tile">
+            <div class="module-tile-top"><span>01 / RHYTHM</span><span>→</span></div>
+            <b>Today's Footprint</b>
+            <small>Passive commute check-in, room power &amp; AI cloud impact</small>
+          </a>
+          <a href="./heal.html" class="module-tile">
+            <div class="module-tile-top"><span>02 / HEAL</span><span>→</span></div>
+            <b>Plant &amp; Balance</b>
+            <small>Optical sapling check-ins &amp; daily carbon-saving shifts</small>
+          </a>
+          <a href="./circle.html" class="module-tile">
+            <div class="module-tile-top"><span>03 / BELONG</span><span>→</span></div>
+            <b>Campus Circle</b>
+            <small>MITAOE EVS cohort score &amp; Earth Pulse stories</small>
+          </a>
+          <a href="./studio.html" class="module-tile">
+            <div class="module-tile-top"><span>04 / STUDIO</span><span>→</span></div>
+            <b>Solar &amp; Vault</b>
+            <small>Rooftop solar bill savings, research docs &amp; field log</small>
+          </a>
         </div>
       </div>
     </section>
-
-    <section class="section-shell rhythm-section" id="rhythm">
-      <div class="section-heading compact-heading">
-        <div><div class="eyebrow"><span class="eyebrow-dot"></span> 03 — BUILD A BETTER RHYTHM</div><h2>Progress, not<br><em>perfection.</em></h2></div>
-        <div class="section-heading-note">One small action at a time. Mark a challenge when you complete it; your progress is saved locally and is never sent to a leaderboard.</div>
-      </div>
-      <div class="mission-layout">
-        <div class="mission-overview">
-          <div class="mission-count"><strong id="missionCount">0</strong><span>/ 5</span></div>
-          <h3>Today's eco<br>intentions</h3>
-          <p>A personal nudge, not a scorecard. Every check-in is a chance to notice a choice.</p>
-          <div class="mission-progress"><span id="missionProgressBar"></span></div>
-          <small id="missionProgressText">0 of 5 actions completed</small>
-        </div>
-        <div class="mission-list" id="missionList">
-          <label class="mission-item"><input type="checkbox" data-mission="commute"><span class="mission-check"></span><span class="mission-content"><b>Choose a lighter commute</b><small>Walk, cycle, carpool, or use shared transport today.</small></span><span class="mission-category">MOBILITY</span></label>
-          <label class="mission-item"><input type="checkbox" data-mission="power"><span class="mission-check"></span><span class="mission-content"><b>Switch off standby</b><small>Unplug one device or switch off an unused light.</small></span><span class="mission-category">ENERGY</span></label>
-          <label class="mission-item"><input type="checkbox" data-mission="waste"><span class="mission-check"></span><span class="mission-content"><b>Sort before you throw</b><small>Separate dry, wet, and recyclable waste at source.</small></span><span class="mission-category">WASTE</span></label>
-          <label class="mission-item"><input type="checkbox" data-mission="refill"><span class="mission-check"></span><span class="mission-content"><b>Carry a refillable bottle</b><small>Skip one single-use bottle or cup.</small></span><span class="mission-category">REUSE</span></label>
-          <label class="mission-item"><input type="checkbox" data-mission="share"><span class="mission-check"></span><span class="mission-content"><b>Share one useful idea</b><small>Tell a classmate about a practical campus action.</small></span><span class="mission-category">COMMUNITY</span></label>
-        </div>
-      </div>
-    </section>
-
-    <section class="field-section" id="field-notes">
-      <div class="section-shell field-layout">
-        <div class="field-copy">
-          <div class="eyebrow eyebrow-light"><span class="eyebrow-dot"></span> 04 — BE CURIOUS OUT THERE</div>
-          <h2>Take the<br><em>classroom outside.</em></h2>
-          <p>Keep observations from campus and field visits in one pocket journal. These notes are separate from your carbon estimate — because not every environmental measurement is CO₂.</p>
-          <div class="syllabus-tags"><span>UNIT 1 · FIELD STUDY</span><span>UNIT 2 · POLLUTION</span><span>UNIT 3 · GLOBAL ISSUES</span></div>
-          <div class="field-stat"><strong id="fieldNoteCount">0</strong><span>observations saved on this device</span></div>
-        </div>
-        <div class="field-card">
-          <div class="field-card-heading"><span>FIELD NOTE / NEW ENTRY</span><span class="field-pin">⌖</span></div>
-          <form id="fieldForm">
-            <div class="field-form-row">
-              <label class="field"><span>Site / location</span><input id="siteName" type="text" maxlength="70" placeholder="e.g. Campus waste point" required></label>
-              <label class="field"><span>Observation type</span><select id="observationType"><option value="Solid waste">Solid waste</option><option value="Air quality">Air quality</option><option value="Water">Water</option><option value="Soil">Soil</option><option value="Noise">Noise</option><option value="Ecosystem / biodiversity">Ecosystem / biodiversity</option><option value="Other">Other</option></select></label>
-            </div>
-            <div class="field-form-row field-form-row-measure">
-              <label class="field"><span>Measurement <small>OPTIONAL</small></span><input id="measurement" type="text" maxlength="40" placeholder="e.g. pH 7.2, 62 dB, EC ..."></label>
-              <label class="field"><span>Date</span><input id="observationDate" type="date" required></label>
-            </div>
-            <label class="field field-textarea"><span>What did you notice?</span><textarea id="observationText" rows="3" maxlength="500" placeholder="Describe the condition, possible source, and one feasible preventive measure..." required></textarea></label>
-            <div class="field-form-footer"><small>Keep measurements factual. Add geo-tagged photos to your report separately.</small><button class="button button-primary button-small" type="submit">Save field note <span>＋</span></button></div>
-          </form>
-          <div class="field-notes-list" id="fieldNotesList"><div class="empty-notes">Your saved observations will appear here.</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-shell pocket-section" id="pocket">
-      <div class="pocket-top"><div><div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DATA, YOUR DEVICE</div><h2>A pocket-sized<br><em>eco companion.</em></h2></div><p>Move your own CarbCalc records between your phone and laptop. Nothing is uploaded to a server; you decide which files to import or share.</p></div>
-      <div class="pocket-grid">
-        <div class="pocket-feature"><div class="pocket-number">01</div><div class="pocket-icon">⇧</div><h3>Bring your data in</h3><p>Choose a CarbCalc JSON backup or a CSV activity log from your device. The last imported row can prefill the calculator.</p><button type="button" class="text-button pocket-action" id="importTrigger">Import a file <span>↗</span></button><button type="button" class="text-button pocket-action subtle-action" id="templateTrigger">Download CSV template ↓</button><input type="file" id="importFile" accept=".json,.csv,application/json,text/csv" hidden></div>
-        <div class="pocket-feature"><div class="pocket-number">02</div><div class="pocket-icon">↓</div><h3>Keep a copy</h3><p>Export a backup of your inputs, saved snapshots, field notes, and mission progress as a JSON file.</p><button type="button" class="text-button pocket-action" id="exportTrigger">Export my backup <span>↗</span></button><button type="button" class="text-button pocket-action subtle-action" id="exportCsvTrigger">Export snapshot CSV ↓</button></div>
-        <div class="pocket-feature"><div class="pocket-number">03</div><div class="pocket-icon">⌁</div><h3>Share a small win</h3><p>Create a simple text summary and use your phone's native share sheet or copy it to a message.</p><button type="button" class="text-button pocket-action" id="shareTrigger">Share my summary <span>↗</span></button></div>
-      </div>
-      <div class="phone-note"><span class="phone-note-icon">ⓘ</span><p><b>Phone privacy, plainly stated.</b> A normal website cannot silently read your GPS history, step count, Google Maps Timeline, utility-app data, or other apps' private records. CarbCalc only reads a file you explicitly choose. Import a CSV/JSON export or enter an estimate yourself; no background tracking is used.</p></div>
-      <div class="history-panel">
-        <div class="history-head"><div><span class="eyebrow">YOUR SAVED RECORDS</span><h3>A little trail of progress</h3></div><span class="history-count" id="historyCount">0 saved snapshots</span></div>
-        <div class="history-empty" id="historyEmpty"><span>◎</span><p>Save your first daily snapshot to begin your personal trail.</p></div>
-        <div class="history-list" id="historyList"></div>
-      </div>
-    </section>
-
-    <section class="course-strip">
-      <div class="section-shell course-inner"><div><span>BUILT AROUND THE MITAOE ENVIRONMENTAL SCIENCE COURSE</span><h2>From personal habits to<br><em>environmental responsibility.</em></h2></div><p>CarbCalc complements the course themes of ecology, biodiversity, pollution control, solid waste management, climate change, environmental ethics, and sustainable development. It is a learning aid — not a replacement for field measurements or verified environmental data.</p><a href="#field-notes" class="course-link">Open your field journal ↗</a></div>
-    </section>
-
   </main>
 
-  <footer class="site-footer"><div class="section-shell footer-inner"><a class="brand footer-brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span><span class="brand-name">carb<span>calc</span><small>STUDENT ECO LEDGER</small></span></a><p>Make the invisible visible. Then make a better choice.</p><span class="footer-credit">Environmental Science · IT SY-C · MIT Academy of Engineering, Alandi</span></div></footer>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="./index.html">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
+        <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+      </a>
+      <p>Live lightly. Leave more room to grow.</p>
+      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+    </div>
+  </footer>
 
-  <div class="modal-backdrop" id="formulaModal" role="dialog" aria-modal="true" aria-labelledby="formulaTitle" hidden>
-    <div class="modal-card"><button class="modal-close" type="button" id="formulaClose" aria-label="Close formulas">×</button><div class="eyebrow"><span class="eyebrow-dot"></span> OPEN MATH, NO BLACK BOX</div><h2 id="formulaTitle">How the estimate<br><em>is calculated.</em></h2>
-      <div class="formula-list">
-        <div class="formula-row"><span>01 / PETROL</span><strong>Daily km ÷ km per litre ÷ occupants × 2.33</strong><p>Uses 2.33 kg CO₂ per litre of petrol, as given in the supplied presentation script.</p></div>
-        <div class="formula-row"><span>02 / ELECTRICITY</span><strong>(Monthly kWh ÷ 30 ÷ occupants) × 0.82</strong><p>Uses 0.82 kg CO₂ per kWh, as given in the supplied presentation script.</p></div>
-        <div class="formula-row"><span>03 / WASTE</span><strong>Daily unsegregated waste (kg) × 0.63</strong><p>Uses 0.63 kg CO₂ per kg of waste, as given in the supplied presentation script.</p></div>
+  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
+    <a href="./index.html" class="active"><span>🌱</span>Home</a>
+    <a href="./dashboard.html"><span>📊</span>Rhythm</a>
+    <a href="./heal.html"><span>🌳</span>Heal</a>
+    <a href="./circle.html"><span>🤝</span>Circle</a>
+    <a href="./studio.html"><span>☀️</span>Studio</a>
+  </nav>
+
+  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true" aria-label="Navigation and Android App">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span><h3>CarbCalc Pages</h3></div><button class="drawer-close" id="menuDrawerClose" type="button" aria-label="Close menu">×</button></div>
+      <div class="drawer-nav-cards">
+        <a href="./index.html" class="drawer-nav-link active"><span>01 · Welcome &amp; Account</span><span>→</span></a>
+        <a href="./dashboard.html" class="drawer-nav-link"><span>02 · Today's Rhythm &amp; Score</span><span>→</span></a>
+        <a href="./heal.html" class="drawer-nav-link"><span>03 · Ways to Heal &amp; Plant a Tree</span><span>→</span></a>
+        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth Pulse</span><span>→</span></a>
+        <a href="./studio.html" class="drawer-nav-link"><span>05 · Solar Savings, Research Vault &amp; Journal</span><span>→</span></a>
       </div>
-      <div class="formula-total"><span>TOTAL DAILY ESTIMATE</span><strong>Petrol + electricity + waste</strong></div>
-      <p class="modal-caution">These are project starter factors, not universal constants. The model excludes food, flights, purchases, public-transport lifecycle emissions, and other sources not included in the supplied formulas. The three status bands are project-defined display bands, not official standards.</p>
+      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span><p>Download the Capacitor-packaged APK build directly to your phone.</p><a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a></div>
+      <div class="drawer-apk-box"><span class="eyebrow">AMBIENT NUDGES</span><p>Preview the gentle anti-doomscroll reminder overlay.</p><button type="button" class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay ✦</button></div>
+    </aside>
+  </div>
+
+  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true" aria-label="Gentle notifications">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span><h3>Eco Nudges</h3></div><button class="drawer-close" id="nudgeDrawerClose" type="button" aria-label="Close notifications">×</button></div>
+      <div class="nudge-list" id="nudgeList"></div>
+      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small" id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
+    </aside>
+  </div>
+
+  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle" hidden>
+    <div class="ambient-card">
+      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
+      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
+      <p id="ambientBody">On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging — reminding us that small local courage changes national history.</p>
+      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes of daylight (+15 Eco Score).</div>
+      <div class="ambient-actions"><button type="button" class="button button-primary button-small" id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button" id="ambientDismissBtn">Maybe later <span>→</span></button></div>
     </div>
   </div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="./app.js" defer></script>
 </body>
 </html>

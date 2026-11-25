@@ -1,6 +1,17 @@
-const CACHE_NAME = 'carbcalc-shell-v1';
+const CACHE_NAME = 'carbcalc-shell-v3';
 const APP_FILES = [
-  './', './index.html', './styles.css', './app.js', './manifest.webmanifest', './icon.svg'
+  './',
+  './index.html',
+  './dashboard.html',
+  './heal.html',
+  './circle.html',
+  './studio.html',
+  './styles.css',
+  './app.js',
+  './manifest.webmanifest',
+  './icon.svg',
+  './CarbCalc-Android.apk',
+  './researched by anti gravity/07_Master_Verified_Emission_Dataset_India_2026.json'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1,0 +1,15 @@
+{
+  "appId": "in.edu.mitaoe.carbcalc",
+  "appName": "CarbCalc",
+  "webDir": ".",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_leaf",
+      "iconColor": "#173d30"
+    }
+  }
+}

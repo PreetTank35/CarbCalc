@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173d30">
+  <title>Solar, Research Vault &amp; Studio — CarbCalc</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-page="studio">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="CarbCalc home">
+      <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
+      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+    </a>
+
+    <nav class="page-nav" aria-label="Primary pages">
+      <a href="./index.html">Welcome</a>
+      <a href="./dashboard.html">Today's Rhythm</a>
+      <a href="./heal.html">Heal &amp; Plant</a>
+      <a href="./circle.html">Circle &amp; Pulse</a>
+      <a href="./studio.html" class="active">Solar &amp; Vault</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" title="Download Android APK"><span>⬇</span><span class="apk-btn-text">Get APK</span></a>
+      <button class="profile-pill" id="profilePillBtn" type="button"><span class="profile-avatar" id="headerAvatar">A</span><span class="profile-meta"><strong id="headerUserName">Atharv</strong><small id="headerScoreMini">784 pts</small></span></button>
+      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges"><span class="bell-halo" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg><span class="bell-badge" id="bellBadge">3</span></button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg></button>
+      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button"><span class="menu-lines"><span></span><span></span></span><span class="menu-label">Menu</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-section section-shell">
+      <div class="page-top-banner">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> 04 — SOLAR, RESEARCH VAULT &amp; JOURNAL</div>
+          <h1>Deep tools, <em>cleanly organized.</em></h1>
+        </div>
+        <p class="page-top-note">Import an electricity bill for rooftop solar savings, explore the verified Indian research documents, and keep your EVS field notes.</p>
+      </div>
+
+      <div class="studio-grid">
+        <div class="studio-card">
+          <span class="eyebrow">01 / ELECTRICITY BILL &amp; ROOFTOP SOLAR</span>
+          <h3>See what solar saves</h3>
+          <p class="tool-intro">Import an electricity bill file or enter monthly units/amount to calculate carbon savings under India's PM Surya Ghar benchmark (4.2 kWh/kW/day).</p>
+          <div class="solar-form-grid">
+            <label class="field"><span>Monthly bill <small>₹ INR</small></span><input id="billAmountInput" type="number" min="0" max="100000" step="100" value="2400"></label>
+            <label class="field"><span>Or monthly units <small>KWH</small></span><input id="billUnitsInput" type="number" min="0" max="10000" step="10" value="320"></label>
+          </div>
+          <div class="solar-size-pills" id="solarSizePills">
+            <button type="button" class="soft-pill" data-solar-kw="1">1 kW Solar</button>
+            <button type="button" class="soft-pill" data-solar-kw="2">2 kW Solar</button>
+            <button type="button" class="soft-pill active" data-solar-kw="3">3 kW Solar</button>
+          </div>
+          <div class="solar-bill-upload-row">
+            <button type="button" class="text-button" id="billUploadTrigger">Import bill file (TXT / CSV / JSON / Photo) <span>↗</span></button>
+            <input type="file" id="billFileInput" accept=".txt,.csv,.json,image/*" hidden>
+          </div>
+          <div class="solar-result-box">
+            <div><span>Current grid CO₂</span><strong id="solarCurrentCo2">216.0 kg/mo</strong></div>
+            <div><span>Solar bill savings</span><strong id="solarSavingsInr">₹2,400 / mo</strong></div>
+            <div><span>CO₂ avoided yearly</span><strong id="solarAvoidedYear">2.59 tonnes/yr</strong></div>
+            <div><span>Equivalent shade</span><strong id="solarTreesEq">~118 Neem trees</strong></div>
+          </div>
+        </div>
+
+        <div class="studio-card">
+          <span class="eyebrow">02 / RESEARCHED BY ANTI GRAVITY</span>
+          <h3>Official Research Vault</h3>
+          <p class="tool-intro">Every formula and factor in CarbCalc comes directly from Government of India &amp; peer-reviewed reports stored in <code>researched by anti gravity/</code>.</p>
+          <div class="research-vault-list" id="researchVaultList"></div>
+        </div>
+
+        <div class="studio-card">
+          <span class="eyebrow">03 / CAMPUS &amp; FIELD OBSERVATIONS</span>
+          <h3>EVS Field Journal</h3>
+          <form id="fieldForm" class="drawer-field-form">
+            <div class="solar-form-grid">
+              <label class="field"><span>Site / location</span><input id="siteName" type="text" maxlength="70" placeholder="e.g. Campus compost pit" required></label>
+              <label class="field"><span>Observation</span>
+                <select id="observationType">
+                  <option value="Solid waste">Solid waste</option>
+                  <option value="Air quality">Air quality</option>
+                  <option value="Water">Water</option>
+                  <option value="Soil">Soil</option>
+                  <option value="Noise">Noise</option>
+                  <option value="Biodiversity">Biodiversity</option>
+                </select>
+              </label>
+            </div>
+            <div class="solar-form-grid">
+              <label class="field"><span>Measurement</span><input id="measurement" type="text" maxlength="40" placeholder="e.g. pH 7.2, 62 dB"></label>
+              <label class="field"><span>Date</span><input id="observationDate" type="date" required></label>
+            </div>
+            <label class="field"><span>Notes</span><textarea id="observationText" rows="2" maxlength="400" placeholder="Note condition and preventive step..." required></textarea></label>
+            <button class="button button-primary button-small" type="submit">Save Field Note ＋</button>
+          </form>
+          <div class="field-notes-list" id="fieldNotesList"></div>
+        </div>
+
+        <div class="studio-card">
+          <span class="eyebrow">04 / ANDROID APP, NUDGES &amp; BACKUP</span>
+          <h3>Pocket Companion Controls</h3>
+          <p class="tool-intro">Download the Android APK built for Capacitor, toggle gentle reminders, or export your local history.</p>
+          <div class="apk-download-card" style="margin-bottom:16px;">
+            <div class="apk-info">
+              <div class="apk-icon-well" aria-hidden="true">📱</div>
+              <div><b>CarbCalc-Android.apk</b><small>Direct Capacitor-ready Android package</small></div>
+            </div>
+            <a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Install APK ↓</a>
+          </div>
+          <label class="inline-check" style="margin-bottom:14px;">
+            <input type="checkbox" id="autoInterrupterToggle" checked>
+            <span>Enable gentle pause reminders while browsing</span>
+          </label>
+          <div style="margin-bottom:14px;">
+            <button type="button" class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay Now ✦</button>
+          </div>
+          <div class="drawer-backup-bar">
+            <button type="button" class="text-button" id="importTrigger">Import JSON <span>↗</span></button>
+            <button type="button" class="text-button" id="exportTrigger">Export Backup <span>↓</span></button>
+            <button type="button" class="text-button" id="exportCsvTrigger">Export CSV <span>↓</span></button>
+            <button type="button" class="text-button" id="shareTrigger">Share Summary <span>⌁</span></button>
+            <input type="file" id="importFile" accept=".json,application/json" hidden>
+          </div>
+          <div class="compact-history" id="historyList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="./index.html"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span><span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span></a>
+      <p>Live lightly. Leave more room to grow.</p>
+      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
+    <a href="./index.html"><span>🌱</span>Home</a>
+    <a href="./dashboard.html"><span>📊</span>Rhythm</a>
+    <a href="./heal.html"><span>🌳</span>Heal</a>
+    <a href="./circle.html"><span>🤝</span>Circle</a>
+    <a href="./studio.html" class="active"><span>☀️</span>Studio</a>
+  </nav>
+
+  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true" aria-label="Navigation and Android App">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span><h3>CarbCalc Pages</h3></div><button class="drawer-close" id="menuDrawerClose" type="button">×</button></div>
+      <div class="drawer-nav-cards">
+        <a href="./index.html" class="drawer-nav-link"><span>01 · Welcome &amp; Account</span><span>→</span></a>
+        <a href="./dashboard.html" class="drawer-nav-link"><span>02 · Today's Rhythm &amp; Score</span><span>→</span></a>
+        <a href="./heal.html" class="drawer-nav-link"><span>03 · Ways to Heal &amp; Plant a Tree</span><span>→</span></a>
+        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth Pulse</span><span>→</span></a>
+        <a href="./studio.html" class="drawer-nav-link active"><span>05 · Solar Savings, Research Vault &amp; Journal</span><span>→</span></a>
+      </div>
+      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span><p>Download the Capacitor-packaged APK build directly to your phone.</p><a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a></div>
+    </aside>
+  </div>
+
+  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
+    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true" aria-label="Gentle notifications">
+      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span><h3>Eco Nudges</h3></div><button class="drawer-close" id="nudgeDrawerClose" type="button">×</button></div>
+      <div class="nudge-list" id="nudgeList"></div>
+      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small" id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
+    </aside>
+  </div>
+
+  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle" hidden>
+    <div class="ambient-card">
+      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
+      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
+      <p>On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging — reminding us that small local courage changes national history.</p>
+      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes of daylight (+15 Eco Score).</div>
+      <div class="ambient-actions"><button type="button" class="button button-primary button-small" id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button" id="ambientDismissBtn">Maybe later <span>→</span></button></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
