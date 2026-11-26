@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "title": "CarbCalc Verified Indian Carbon & Sustainability Dataset (2026)",
+    "compiledBy": "researched by anti gravity",
+    "sources": [
+      "Central Electricity Authority (CEA) CO2 Baseline Database v22.0, August 2026 (FY 2025-26)",
+      "WRI India / India GHG Program (2015) — Road, Rail, Air Transport Emission Factors",
+      "ITF & The World Bank (August 2023) — Life-Cycle Assessment of Passenger Transport: An Indian Case Study",
+      "MoHUA (2026) — Appraisal Guidelines for Metro Rail Project Proposals",
+      "MNRE PM Surya Ghar: Muft Bijli Yojana & BEE Star Labelling Standards",
+      "Indian Academy of Sciences, Resonance (Dec 2025) — Think Before You Click",
+      "Forest Survey of India (FSI, MoEFCC) ISFR Allometric Biomass Standard",
+      "CSBC Ashoka University (March 2024) — Greener Palates in Urban India & Pathak et al. (2010)",
+      "CPCB / GHG Platform India & UNEP Food Waste Index (2021)"
+    ]
+  },
+  "electricity": {
+    "gridFactorKgPerKwh": 0.675,
+    "gridFactorPrevious2024_25": 0.710,
+    "gridFactor2013_14": 0.774,
+    "operatingMarginKgPerKwh": 0.963,
+    "buildMarginKgPerKwh": 0.446,
+    "combinedMarginKgPerKwh": 0.705,
+    "installedCapacityMW": 532739.72,
+    "solarInstalledMW": 150261,
+    "resInstalledMW": 223273.43,
+    "appliancesWatts": {
+      "splitAc1500W": 1500,
+      "desertCooler200W": 200,
+      "ceilingFan75W": 75,
+      "bldcFan28W": 28,
+      "laptop65W": 65,
+      "ledLamp10W": 10
+    },
+    "solar": {
+      "kwhPerKwPerDay": 4.2,
+      "kwhPerKwPerMonth": 126,
+      "defaultTariffInrPerKwh": 7.5,
+      "co2AvoidedKgPerKwYear": 1034.8
+    }
+  },
+  "transport": {
+    "walking": { "operationalKgPerPkm": 0, "lcaKgPerPkm": 0, "label": "Walked or cycled", "source": "Standard zero-tailpipe convention" },
+    "petrol_scooter": { "operationalKgPerPkm": 0.0368, "lcaKgPerPkm": 0.074, "label": "Petrol scooter", "source": "WRI India 2015 (<110cc w/ 10% uplift) & ITF 2023" },
+    "ev_scooter": { "operationalKgPerPkm": 0.02025, "lcaKgPerPkm": 0.046, "manufacturingSharePct": 35, "label": "Electric scooter", "source": "ITF 2023 (0.03 kWh/km × 0.675 CEA; 35% manufacturing)" },
+    "auto_cng": { "operationalKgPerVkm": 0.10768, "shared3PaxKgPerPkm": 0.0359, "lcaKgPerPkm": 0.075, "label": "CNG auto-rickshaw", "source": "WRI India 2015 & ITF 2023" },
+    "city_bus": { "operationalKgPerPkm": 0.015161, "lcaKgPerPkm": 0.031, "label": "City bus", "source": "WRI India 2015 & ITF 2023" },
+    "metro_rail": { "operationalKgPerPkm": 0.018, "lcaKgPerPkm": 0.024, "label": "Metro / local train", "source": "ITF 2023 Metro & WRI Rail (0.007976 suburban)" },
+    "petrol_car": { "operationalKgPerVkm": 0.140, "lcaKgPerPkm": 0.162, "label": "Petrol car", "source": "WRI India 2015 (<1400cc w/ 8% uplift) & ITF 2023" },
+    "ev_car": { "operationalKgPerVkm": 0.0945, "lcaKgPerPkm": 0.118, "manufacturingSharePct": 37, "label": "Electric car", "source": "ITF 2023 (0.14 kWh/km × 0.675 CEA; 37% manufacturing)" },
+    "domestic_flight": { "operationalKgPerPkm": 0.121, "defraRfKgPerPkm": 0.22928, "label": "Domestic flight", "source": "WRI India 2015 & UK DEFRA 2025" }
+  },
+  "digital": {
+    "phoneFullChargeKwh": 0.021,
+    "phoneFullChargeKgCo2": 0.014175,
+    "llmQueryKgCo2e": 0.0022,
+    "streamingHourKgCo2e": 0.0276,
+    "source": "Indian Academy of Sciences, Resonance (Dec 2025) & CEA v22.0 (2026)"
+  },
+  "foodAndWaste": {
+    "dietsDailyKgCo2e": {
+      "plant_local": 0.7237,
+      "lacto_dairy": 1.0132,
+      "chicken_fish": 1.0856,
+      "red_meat": 1.3027
+    },
+    "wasteUnsegregatedKgCo2PerKg": 0.63,
+    "wasteSegregatedCompostKgCo2PerKg": 0.03,
+    "indiaFoodWasteKgPerCapitaYear": 50,
+    "source": "Pathak et al. (2010), CSBC Ashoka (2024), UNEP (2021), CPCB / India GHG Program"
+  },
+  "treesAnnualKgCo2": {
+    "neem": { "name": "Neem (Azadirachta indica)", "annualKgCo2": 22.0 },
+    "peepal": { "name": "Peepal (Ficus religiosa)", "annualKgCo2": 28.0 },
+    "banyan": { "name": "Banyan (Ficus benghalensis)", "annualKgCo2": 32.0 },
+    "mango": { "name": "Desi Mango (Mangifera indica)", "annualKgCo2": 20.0 },
+    "bamboo": { "name": "Bamboo Clump (Dendrocalamus)", "annualKgCo2": 40.0 }
+  }
+}

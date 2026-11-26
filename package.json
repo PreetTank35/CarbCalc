@@ -7,6 +7,9 @@
     "cap:sync": "npx cap sync android",
     "cap:open": "npx cap open android"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@capacitor/android": "^8.6.3",
+    "@capacitor/cli": "^8.6.3",
+    "@capacitor/core": "^8.6.3"
+  }
 }

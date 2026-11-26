@@ -608,6 +608,25 @@
     on('installBtn', 'click', () => showToast('Downloading CarbCalc-Android.apk for Android...'));
     on('heroApkBtn', 'click', () => showToast('Downloading CarbCalc-Android.apk for Android...'));
 
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    on('pwaDirectInstallBtn', 'click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          showToast('CarbCalc installed to your device!');
+        }
+        deferredPrompt = null;
+      } else {
+        alert('To install CarbCalc directly on Android:\n\n1. In Chrome / Edge / Brave, tap the (⋮) menu button.\n2. Tap "Install app" or "Add to Home screen".\n3. CarbCalc will install instantly with zero package errors!');
+      }
+    });
+
     on('themeToggle', 'click', () => {
       state.darkMode = !document.body.classList.contains('dark-mode');
       document.body.classList.toggle('dark-mode', state.darkMode);

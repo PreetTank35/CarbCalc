@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CarbCalc</string>
+    <string name="title_activity_main">CarbCalc</string>
+    <string name="package_name">in.edu.mitaoe.carbcalc</string>
+    <string name="custom_url_scheme">in.edu.mitaoe.carbcalc</string>
+</resources>

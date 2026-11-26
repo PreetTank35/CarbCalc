@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Local JDK and Gradle caches
+jdk17/
+.gradle/
+*.zip
+
+# Android build outputs
+android/.gradle/
+android/app/build/
+android/build/
+android/captures/
+android/.idea/
+android/*.iml
+android/local.properties
