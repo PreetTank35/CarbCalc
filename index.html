@@ -80,7 +80,7 @@
   </style>
 </head>
 <body class="bg-surface font-sans text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container min-h-screen flex flex-col">
-<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+<header class="hidden md:block fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
   <div class="h-20 max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
     <a href="index.html" class="flex items-center gap-space-sm">
       <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
@@ -119,7 +119,116 @@
     </div>
   </div>
 </header>
-<main class="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
+<main id="mobileOnboarding" class="md:hidden flex-1 w-full bg-surface flex flex-col"><div class="flex flex-col justify-between w-full min-h-screen px-6 py-8 bg-gradient-to-b from-[#F7FAF6] to-[#EEF4ED] text-on-surface flex-1">
+  <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center text-center space-y-2 mb-4">
+      <div class="inline-flex items-center gap-2 bg-surface-container-lowest px-4 py-1.5 rounded-full shadow-sm">
+        <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"></path>
+        </svg>
+        <span class="font-label-md text-label-md text-primary tracking-wide uppercase font-semibold">CarbCalc</span>
+      </div>
+      <p class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-normal">
+        Your lifestyle. Your planet. Your impact.
+      </p>
+    </div>
+
+    <div class="relative w-full aspect-square max-w-[320px] mx-auto my-2 flex items-center justify-center">
+      <div class="absolute inset-4 rounded-full bg-secondary-fixed/30 blur-2xl pointer-events-none"></div>
+      <svg class="absolute inset-0 w-full h-full pointer-events-none animate-[spin_40s_linear_infinite]" fill="none" viewBox="0 0 320 320">
+        <ellipse class="opacity-70" cx="160" cy="160" rx="140" ry="50" stroke="#7ed99e" stroke-dasharray="6 6" stroke-width="1.5" transform="rotate(-22 160 160)"></ellipse>
+        <circle class="shadow-sm" cx="285" cy="115" fill="#006d3e" r="4.5"></circle>
+        <circle cx="35" cy="205" fill="#164b35" r="3"></circle>
+      </svg>
+      <div class="relative w-52 h-52 rounded-full overflow-hidden shadow-xl bg-surface-container-highest">
+        <img class="w-full h-full object-cover" data-alt="A clean, minimalist 3D rendering of planet Earth with gentle soft sage green continental contours and soothing translucent pale ocean surfaces. Soft studio lighting highlights realistic atmospheric glow in an eco-tech aesthetic with subtle botanical accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu8AwPwBnClldI5KDtdzXAEnV9poXtGbDdEx0WmszKRcA7wxFtOtiZ3agJF9e0l2fICJVx28GCIs_GjGxSjZtn_Ru7BEOx0H9p4QADbhFn_ITmUQaYQbTUsutp6QDo_TXFGy_kXwDen8Jf_O7cbOgS82IgLvNRGOd7VTNBG3yw74wJk7Iv3lpLFoOl6j-bhPfiiZ4WCrpAQwi8_zKGrip5Mgzpi7d0llPTG5NfHzRU">
+        <div class="absolute inset-0 bg-gradient-to-tr from-primary-container/20 via-transparent to-surface-bright/40 pointer-events-none"></div>
+      </div>
+      <div class="absolute -top-1 left-2 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-surface-container/50">
+        <svg class="w-3.5 h-3.5 text-secondary flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C8 2 4 6 4 10c0 4.5 4.5 9 8 12 3.5-3 8-7.5 8-12 0-4-4-8-8-8zm0 13c-2.8 0-5-2.2-5-5 0-2.4 2.2-4 5-4s5 1.6 5 4c0 2.8-2.2 5-5 5z"></path>
+        </svg>
+        <span class="font-label-sm text-label-sm text-primary font-semibold">100% Student Focused</span>
+      </div>
+      <div class="absolute bottom-2 -right-1 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-md flex items-center gap-1.5 border border-surface-container/50">
+        <svg class="w-3.5 h-3.5 text-primary-container flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+        <span class="font-label-sm text-label-sm text-primary-container font-semibold">Verified Scope 1-3 Model</span>
+      </div>
+    </div>
+
+    <div class="inline-flex items-center justify-center gap-2 mx-auto my-3 bg-surface-container-low px-4 py-1.5 rounded-full text-center border border-surface-container-high/60">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+      </span>
+      <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">
+        14,200+ students across 85 schools active
+      </span>
+    </div>
+
+    <div class="flex flex-col text-center space-y-2 px-2 mt-2 mb-4">
+      <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold tracking-tight">
+        Understand your impact.<br>Change your future.
+      </h1>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-[340px] mx-auto">
+        Track daily habits, see where your emissions come from, and join fellow school students in climate action micro-challenges.
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col w-full space-y-3 mt-4 pt-2">
+    <button class="w-full bg-primary-container text-on-primary py-3.5 px-6 rounded-[14px] font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all hover:bg-primary" id="calc-cta">
+      <span class="font-semibold">Calculate Footprint (3 mins)</span>
+      <svg class="w-5 h-5 text-secondary-fixed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
+    <button class="w-full bg-surface-container-lowest text-secondary py-3 px-6 rounded-[14px] font-label-lg text-label-lg shadow-sm border border-secondary-fixed/50 flex items-center justify-center gap-2 active:bg-surface-container transition-colors hover:bg-surface-container-lowest/80" id="sample-cta">
+      <svg class="w-4 h-4 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+      </svg>
+      <span class="font-semibold">Explore Sample Dashboard</span>
+    </button>
+
+    <div class="flex items-center justify-center gap-1.5 text-center pt-2 pb-1">
+      <svg class="w-3.5 h-3.5 text-outline flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <path d="m9 12 2 2 4-4"></path>
+      </svg>
+      <p class="font-label-sm text-label-sm text-outline font-normal">
+        No login required to start • Student privacy protected
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    const calcBtn = document.getElementById('calc-cta');
+    const sampleBtn = document.getElementById('sample-cta');
+
+    if (calcBtn) {
+      calcBtn.addEventListener('click', () => {
+        calcBtn.classList.add('opacity-90');
+        setTimeout(() => calcBtn.classList.remove('opacity-90'), 150);
+      });
+    }
+
+    if (sampleBtn) {
+      sampleBtn.addEventListener('click', () => {
+        sampleBtn.classList.add('scale-98');
+        setTimeout(() => sampleBtn.classList.remove('scale-98'), 150);
+      });
+    }
+  })();
+</script><script>document.getElementById("calc-cta").addEventListener("click", function () { window.location.href = "calculator.html"; }); document.getElementById("sample-cta").addEventListener("click", function () { window.location.href = "dashboard.html"; });</script></main>
+<main class="hidden md:block w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
 <div class="flex flex-col w-full">
 <!-- HERO SECTION -->
 <section class="relative w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin pt-6 lg:pt-14 pb-16 lg:pb-24">
@@ -479,7 +588,7 @@ animate();
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div class="flex flex-col gap-2 max-w-xl">
 <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">Structured Assessment</span>
-<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">How CarbonWise Works</h2>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">How CarbCalc Works</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">
             A frictionless three-step workflow designed by university climate researchers to turn abstract data into student empowerment.
           </p>
@@ -725,7 +834,7 @@ animate();
 </section>
 </div>
 </main>
-<footer class="w-full bg-surface-container-low border-t border-outline-variant/50 pt-space-xl pb-space-lg">
+<footer class="hidden md:block w-full bg-surface-container-low border-t border-outline-variant/50 pt-space-xl pb-space-lg">
   <div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl pb-space-xl border-b border-outline-variant/40">
       <div class="md:col-span-6 flex flex-col gap-space-sm">
@@ -772,7 +881,7 @@ animate();
     </div>
   </div>
 </footer>
-<nav class="xl:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
+<nav class="hidden md:block xl:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
   <div class="h-16 px-space-xs flex items-center justify-around">
     <a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-secondary font-bold" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span><span class="text-[11px] font-bold">Home</span></a>
     <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="calculator.html"><span class="material-symbols-outlined text-[22px]">add_chart</span><span class="text-[11px]">Calculate</span></a>

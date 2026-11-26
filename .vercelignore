@@ -1,0 +1,9 @@
+/android/
+/www/
+/jdk17/
+/.gradle/
+/carbonwise_suite/
+/three.js/
+/build-capacitor-apk.ps1
+/assemble_carbonwise.py
+/build_full_suite.py
