@@ -1,245 +1,691 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173d30">
-  <title>Today's Rhythm — CarbCalc</title>
-  <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Student Carbon Calculator — CarbCalc</title>
+  <link rel="manifest" href="./manifest.webmanifest"/>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#003321",
+            "primary-container": "#164b35",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#85ba9e",
+            "primary-fixed": "#b8efd0",
+            "primary-fixed-dim": "#9dd2b5",
+            "secondary": "#006d3e",
+            "secondary-container": "#97f3b6",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#027241",
+            "secondary-fixed": "#9af6b9",
+            "secondary-fixed-dim": "#7ed99e",
+            "tertiary": "#1f3026",
+            "tertiary-container": "#35463b",
+            "tertiary-fixed": "#d4e7d9",
+            "surface": "#edfdf1",
+            "surface-dim": "#ceded2",
+            "surface-bright": "#edfdf1",
+            "surface-variant": "#d6e7da",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#e7f8eb",
+            "surface-container": "#e2f2e5",
+            "surface-container-high": "#dcece0",
+            "surface-container-highest": "#d6e7da",
+            "on-surface": "#111e17",
+            "on-surface-variant": "#404943",
+            "outline": "#717973",
+            "outline-variant": "#c0c9c1",
+            "surface-tint": "#356850",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+  </style>
 </head>
-<body data-page="dashboard">
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <a class="brand" href="./index.html" aria-label="CarbCalc home">
-      <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
-      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+<body class="bg-surface font-sans text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+  <div class="h-20 max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <a href="index.html" class="flex items-center gap-space-sm">
+      <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+        <span class="material-symbols-outlined text-[24px]">eco</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight font-bold">CarbCalc</span>
+        <span class="text-[11px] text-secondary uppercase tracking-widest font-bold">Campus Eco Companion</span>
+      </div>
     </a>
-
-    <nav class="page-nav" aria-label="Primary pages">
-      <a href="./index.html">Welcome</a>
-      <a href="./dashboard.html" class="active">Today's Rhythm</a>
-      <a href="./heal.html">Heal &amp; Plant</a>
-      <a href="./circle.html">Circle &amp; Pulse</a>
-      <a href="./studio.html">Solar &amp; Vault</a>
+    
+    <nav class="hidden xl:flex items-center gap-space-lg">
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="index.html">Home</a>
+      <a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" href="calculator.html">Calculator</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="results.html">Results</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="heal.html">Action Plan</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="circle.html">Campus Circle</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="studio.html">Solar & Vault</a>
     </nav>
-
-    <div class="header-actions">
-      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" title="Download Android APK"><span>⬇</span><span class="apk-btn-text">Get APK</span></a>
-      <button class="profile-pill" id="profilePillBtn" type="button"><span class="profile-avatar" id="headerAvatar">A</span><span class="profile-meta"><strong id="headerUserName">Atharv</strong><small id="headerScoreMini">784 pts</small></span></button>
-      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges"><span class="bell-halo" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg><span class="bell-badge" id="bellBadge">3</span></button>
-      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg></button>
-      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button"><span class="menu-lines"><span></span><span></span></span><span class="menu-label">Menu</span></button>
+    
+    <div class="flex items-center gap-space-xs sm:gap-space-sm">
+      <a href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-all border border-outline-variant/40" title="Download Android APK">
+        <span class="material-symbols-outlined text-[18px]">android</span>
+        <span>Get APK</span>
+      </a>
+      <button id="pwaHeaderBtn" type="button" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md transition-all" title="Install 1-Tap App">
+        <span class="material-symbols-outlined text-[18px]">install_mobile</span>
+        <span>Install App</span>
+      </button>
+      <a href="calculator.html" class="inline-flex items-center justify-center px-4 py-2 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-xl shadow-sm transition-all active:scale-[0.98] font-bold">
+        Calculate
+      </a>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs text-on-primary">
+        <span class="material-symbols-outlined text-[18px]">person</span>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
+<main class="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
+<div class="flex flex-col w-full">
+<div class="w-full max-w-[860px] mx-auto px-margin-mobile lg:px-margin py-8 md:py-12 flex flex-col gap-space-lg">
+<!-- Top Progress & Step Header -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-xs text-on-surface">
+<div class="inline-flex items-center gap-space-xs px-3 py-1 rounded-full bg-surface-container-highest text-primary">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">Step 2 of 5 : Transportation</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+<span>40% completed (est. 2 mins remaining)</span>
+</div>
+</div>
+<!-- Segmented Stage Progress Bar -->
+<div class="grid grid-cols-5 gap-2 w-full pt-1">
+<!-- Stage 1: Done -->
+<div class="h-2 rounded-full bg-secondary transition-all"></div>
+<!-- Stage 2: Active (Forest Green with subtle pulse glow) -->
+<div class="h-2 rounded-full bg-primary-container relative overflow-hidden shadow-sm">
+<div class="absolute inset-0 bg-primary opacity-80 animate-pulse"></div>
+</div>
+<!-- Stage 3: Pending -->
+<div class="h-2 rounded-full bg-surface-container-high"></div>
+<!-- Stage 4: Pending -->
+<div class="h-2 rounded-full bg-surface-container-high"></div>
+<!-- Stage 5: Pending -->
+<div class="h-2 rounded-full bg-surface-container-high"></div>
+</div>
+<!-- Step Titles Strip -->
+<div class="grid grid-cols-5 text-center pt-1 font-label-sm text-label-sm">
+<div class="flex items-center justify-center gap-1 text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span class="hidden sm:inline">1. Profile</span>
+<span class="sm:hidden">1</span>
+</div>
+<div class="flex items-center justify-center gap-1 text-primary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="hidden sm:inline">2. Transport</span>
+<span class="sm:hidden">2</span>
+</div>
+<div class="text-on-surface-variant/70 font-medium">
+<span class="hidden sm:inline">3. Energy</span>
+<span class="sm:hidden">3</span>
+</div>
+<div class="text-on-surface-variant/70 font-medium">
+<span class="hidden sm:inline">4. Food</span>
+<span class="sm:hidden">4</span>
+</div>
+<div class="text-on-surface-variant/70 font-medium">
+<span class="hidden sm:inline">5. Lifestyle</span>
+<span class="sm:hidden">5</span>
+</div>
+</div>
+</div>
+<!-- Main Active Question Card -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm p-6 sm:p-8 md:p-10 flex flex-col gap-space-xl">
+<!-- Question Title & Context -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider uppercase bg-primary-fixed text-on-primary-fixed-variant">Primary Commute</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Updated weekly</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">How do you usually get to school?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Select your primary mode of commute. If you use multiple, pick the one you use for the longest distance.</p>
+</div>
+<!-- Selectable Transportation Cards Grid (4 cols on desktop) -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" id="transport-grid">
+<!-- 1. School Bus (SELECTED STATE) -->
+<button class="transport-option selected relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-secondary-container/40 ring-2 ring-secondary shadow-sm" data-mode="school-bus" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[24px]">directions_bus</span>
+</div>
+<div class="w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] font-bold">check</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">School Bus</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-surface-container-lowest/80 text-secondary text-[11px] font-semibold leading-none">Carpool benefit</span>
+</div>
+</div>
+</button>
+<!-- 2. Walking -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="walking" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">directions_walk</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Walking</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-semibold leading-none">Zero Emissions</span>
+</div>
+</div>
+</button>
+<!-- 3. Bicycle / Scooter -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="bicycle" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">directions_bike</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Bicycle / Scooter</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-semibold leading-none">Zero Emissions</span>
+</div>
+</div>
+</button>
+<!-- 4. Public Transit / Subway -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="public-transit" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">subway</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Public Transit</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-surface-container text-on-surface-variant text-[11px] font-semibold leading-none">High Efficiency</span>
+</div>
+</div>
+</button>
+<!-- 5. Car (Alone / Family) -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="car-alone" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">directions_car</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Car (Alone)</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-error-container text-on-error-container text-[11px] font-semibold leading-none">Higher Impact</span>
+</div>
+</div>
+</button>
+<!-- 6. Carpool (2+ students) -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="carpool" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Carpool (2+)</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-surface-container text-on-surface-variant text-[11px] font-semibold leading-none">Shared footprint</span>
+</div>
+</div>
+</button>
+<!-- 7. Electric Vehicle -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="ev" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Electric Car</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-secondary-fixed text-on-secondary-fixed-variant text-[11px] font-semibold leading-none">Low carbon</span>
+</div>
+</div>
+</button>
+<!-- 8. Two-Wheeler / Moped -->
+<button class="transport-option relative text-left p-4 rounded-xl transition-all duration-150 flex flex-col justify-between min-h-[148px] bg-surface-container-low hover:bg-surface-container" data-mode="moped" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">two_wheeler</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 mt-3">
+<span class="font-label-lg text-label-lg text-primary font-bold leading-tight">Moped / Scooter</span>
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 rounded-[4px] bg-surface-container text-on-surface-variant text-[11px] font-semibold leading-none">Moderate</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Distance Slider Section -->
+<div class="flex flex-col gap-3 pt-2">
+<div class="flex flex-wrap items-baseline justify-between gap-2">
+<label class="font-label-lg text-label-lg text-primary font-bold" for="distance-slider">Average one-way distance to school</label>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container font-label-md text-label-md text-primary">
+<span class="material-symbols-outlined text-[16px] text-secondary">navigation</span>
+<span class="font-bold" id="distance-display">5.4 km (approx 20 mins)</span>
+</div>
+</div>
+<!-- Custom Range Slider styled with theme colors -->
+<div class="relative py-2 flex items-center">
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary focus:outline-none" id="distance-slider" max="30" min="0.5" step="0.1" type="range" value="5.4"/>
+</div>
+<div class="flex items-center justify-between text-[11px] font-medium text-on-surface-variant px-0.5 -mt-1">
+<span>0.5 km</span>
+<span>10 km</span>
+<span>20 km</span>
+<span>30 km+</span>
+</div>
+<!-- Quick Presets -->
+<div class="flex flex-wrap items-center gap-2 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">Quick Select:</span>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-sm text-label-sm transition-colors" data-preset="1.5" type="button">&lt; 2 km</button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm transition-colors" data-preset="5.0" type="button">5 km</button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-sm text-label-sm transition-colors" data-preset="10.0" type="button">10 km</button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary font-label-sm text-label-sm transition-colors" data-preset="18.0" type="button">15+ km</button>
+<button class="preset-btn px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-label-sm text-label-sm transition-colors" data-preset="unknown" type="button">I don't know</button>
+</div>
+</div>
+<!-- Frequency Section (Radio Pills) -->
+<div class="flex flex-col gap-3">
+<label class="font-label-lg text-label-lg text-primary font-bold">How many days per week?</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<label class="frequency-pill relative flex items-center justify-center h-[50px] rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-all">
+<input class="sr-only" name="days-per-week" type="radio" value="1-2"/>
+<span class="font-label-lg text-label-lg text-on-surface-variant font-semibold">1-2 days</span>
+</label>
+<label class="frequency-pill relative flex items-center justify-center h-[50px] rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-all">
+<input class="sr-only" name="days-per-week" type="radio" value="3-4"/>
+<span class="font-label-lg text-label-lg text-on-surface-variant font-semibold">3-4 days</span>
+</label>
+<label class="frequency-pill active relative flex items-center justify-center h-[50px] rounded-xl bg-primary text-on-primary cursor-pointer shadow-sm">
+<input checked="" class="sr-only" name="days-per-week" type="radio" value="5"/>
+<span class="font-label-lg text-label-lg font-semibold flex items-center gap-1.5">
+<span>5 days (standard)</span>
+</span>
+</label>
+<label class="frequency-pill relative flex items-center justify-center h-[50px] rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-all">
+<input class="sr-only" name="days-per-week" type="radio" value="occasional"/>
+<span class="font-label-lg text-label-lg text-on-surface-variant font-semibold">Occasional</span>
+</label>
+</div>
+</div>
+<!-- Vehicle Occupancy / Carpool Helper Toggle -->
+<div class="rounded-xl bg-surface-container-low p-4 flex flex-col gap-3 transition-all">
+<div class="flex items-center justify-between cursor-pointer" id="carpool-toggle">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">family_restroom</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Ride with siblings or classmates?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Splitting rides significantly reduces your individual carbon share.</span>
+</div>
+</div>
+<button aria-label="Toggle passenger options" class="text-secondary hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px] transition-transform duration-200" id="carpool-arrow">expand_more</span>
+</button>
+</div>
+<div class="hidden pt-2 flex flex-col sm:flex-row sm:items-center gap-3 border-t border-outline-variant/30" id="carpool-content">
+<span class="font-label-md text-label-md text-on-surface-variant">How many people typically share the trip with you?</span>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 rounded-lg bg-surface-container-highest text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-colors" type="button">1</button>
+<button class="w-9 h-9 rounded-lg bg-primary-container text-on-primary font-bold text-sm" type="button">2</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-highest text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-colors" type="button">3+</button>
+<button class="w-9 h-9 rounded-lg bg-surface-container-highest text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-colors" type="button">Bus (20+)</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Help Callout -->
+<div class="rounded-xl bg-surface-container-low p-4 flex items-start sm:items-center gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest text-secondary flex-shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 w-full">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong class="font-semibold text-primary">Why this matters:</strong> Daily student transportation accounts for roughly 25-35% of an average teenager's personal carbon emissions footprint.
+        </p>
+<a class="font-label-sm text-label-sm text-secondary hover:underline whitespace-nowrap self-start sm:self-auto font-bold inline-flex items-center gap-1" href="#">
+<span>Read methodology</span>
+<span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+</a>
+</div>
+</div>
+<!-- Bottom Navigation Bar inside Form -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-2">
+<!-- Left: Back Button -->
+<a href="index.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 h-[50px] rounded-xl text-primary font-label-lg text-label-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span>Back to Home</span>
+</a>
+<!-- Right Flex Container -->
+<div class="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-4">
+<button class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors underline-offset-4 hover:underline" type="button">
+          Save &amp; finish later
+        </button>
+<a href="results.html" class="inline-flex items-center justify-center gap-2 px-7 h-[50px] rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-bold shadow-md hover:bg-primary-container active:scale-[0.99] transition-all">
+<span>View Results & Benchmark</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+    // Interactive Transport Selection
+    const transportButtons = document.querySelectorAll('.transport-option');
+    transportButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        transportButtons.forEach(b => {
+          b.classList.remove('selected', 'bg-secondary-container/40', 'ring-2', 'ring-secondary', 'shadow-sm');
+          b.classList.add('bg-surface-container-low');
+          const check = b.querySelector('.w-5.h-5');
+          if (check) check.remove();
+          const iconContainer = b.querySelector('.w-10.h-10');
+          if (iconContainer) {
+            iconContainer.className = 'w-10 h-10 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center';
+          }
+        });
 
-  <main>
-    <section class="page-section section-shell">
-      <div class="page-top-banner">
+        btn.classList.add('selected', 'bg-secondary-container/40', 'ring-2', 'ring-secondary', 'shadow-sm');
+        btn.classList.remove('bg-surface-container-low');
+        const iconContainer = btn.querySelector('.w-10.h-10');
+        if (iconContainer) {
+          iconContainer.className = 'w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shadow-xs';
+        }
+
+        const topRow = btn.querySelector('.flex.items-start');
+        if (topRow && !topRow.querySelector('.w-5.h-5')) {
+          const checkDiv = document.createElement('div');
+          checkDiv.className = 'w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center animate-fade-in';
+          checkDiv.innerHTML = '<span class="material-symbols-outlined text-[14px] font-bold">check</span>';
+          topRow.appendChild(checkDiv);
+        }
+      });
+    });
+
+    // Distance Slider Logic & Presets
+    const slider = document.getElementById('distance-slider');
+    const display = document.getElementById('distance-display');
+    const presetBtns = document.querySelectorAll('.preset-btn');
+
+    function updateSliderText(val) {
+      if (val === 'unknown') {
+        display.textContent = 'Standard average (5.0 km)';
+        slider.value = 5.0;
+        return;
+      }
+      const num = parseFloat(val);
+      const approxMins = Math.round(num * 3.7);
+      display.textContent = `${num.toFixed(1)} km (approx ${approxMins} mins)`;
+    }
+
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        updateSliderText(e.target.value);
+        presetBtns.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary');
+          p.classList.add('bg-surface-container-low', 'text-primary');
+        });
+      });
+    }
+
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        presetBtns.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary');
+          p.classList.add('bg-surface-container-low', 'text-primary');
+        });
+        btn.classList.add('bg-primary-container', 'text-on-primary');
+        btn.classList.remove('bg-surface-container-low', 'text-primary');
+
+        const presetVal = btn.getAttribute('data-preset');
+        if (presetVal === 'unknown') {
+          updateSliderText('unknown');
+        } else {
+          slider.value = presetVal;
+          updateSliderText(presetVal);
+        }
+      });
+    });
+
+    // Frequency Pills Logic
+    const pills = document.querySelectorAll('.frequency-pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => {
+          p.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          p.classList.add('bg-surface-container-low');
+          const span = p.querySelector('span');
+          if (span) span.className = 'font-label-lg text-label-lg text-on-surface-variant font-semibold';
+        });
+
+        pill.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+        pill.classList.remove('bg-surface-container-low');
+        const span = pill.querySelector('span');
+        if (span) span.className = 'font-label-lg text-label-lg font-semibold flex items-center gap-1.5';
+      });
+    });
+
+    // Carpool Collapse Helper
+    const carpoolToggle = document.getElementById('carpool-toggle');
+    const carpoolContent = document.getElementById('carpool-content');
+    const carpoolArrow = document.getElementById('carpool-arrow');
+
+    if (carpoolToggle && carpoolContent && carpoolArrow) {
+      carpoolToggle.addEventListener('click', () => {
+        const isHidden = carpoolContent.classList.contains('hidden');
+        if (isHidden) {
+          carpoolContent.classList.remove('hidden');
+          carpoolArrow.style.transform = 'rotate(180deg)';
+        } else {
+          carpoolContent.classList.add('hidden');
+          carpoolArrow.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+  </script>
+</div>
+</main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/50 pt-space-xl pb-space-lg">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl pb-space-xl border-b border-outline-variant/40">
+      <div class="md:col-span-6 flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">eco</span>
+          </div>
+          <span class="font-headline-sm text-headline-sm text-primary font-bold">CarbCalc</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Effortless daily climate care for students and campuses. Backed by verified Indian grid, transport, and solar datasets (CEA 2026, WRI India, MNRE).
+        </p>
+        <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-highest w-fit">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">MITAOE Alandi Cohort Sync • CEA 2026 Grid 0.675 kg/kWh</span>
+        </div>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Platform</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Home</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="calculator.html">Carbon Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="results.html">Results & Benchmark</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="heal.html">Action Plan & Tree Plant</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="circle.html">Campus Challenges</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Research & Downloads</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html">PM Surya Ghar Solar Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html#vault">CEA & WRI India Research Vault</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download Android APK</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com/PreetTank35/CarbCalc.git" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+      <p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 CarbCalc Academic Initiative • MIT Academy of Engineering, Alandi.</p>
+      <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+        <span class="material-symbols-outlined text-[16px]">verified</span>
+        <span>GHG Protocol Scope 1-3 Youth Framework</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<nav class="xl:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
+  <div class="h-16 px-space-xs flex items-center justify-around">
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span><span class="text-[11px]">Home</span></a>
+    <a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-secondary font-bold" href="calculator.html"><span class="material-symbols-outlined text-[22px]">add_chart</span><span class="text-[11px] font-bold">Calculate</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="results.html"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="text-[11px]">Results</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="heal.html"><span class="material-symbols-outlined text-[22px]">task_alt</span><span class="text-[11px]">Action</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="circle.html"><span class="material-symbols-outlined text-[22px]">group</span><span class="text-[11px]">Circle</span></a>
+  </div>
+</nav>
+<!-- Install Modal -->
+<div id="installModal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-outline-variant/60 flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between pb-3 border-b border-outline-variant/40">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">install_mobile</span>
+        </div>
         <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span> 01 — TODAY'S RHYTHM</div>
-          <h1>A quiet mirror of <em>how you lived today.</em></h1>
+          <h3 class="text-xl font-bold text-primary">Install CarbCalc App</h3>
+          <p class="text-xs text-on-surface-variant">Choose your preferred installation method</p>
         </div>
-        <p class="page-top-note">Confirm how your day moved and see yesterday alongside today in clear, human numbers.</p>
       </div>
-
-      <div class="passive-prompt-card">
-        <div class="passive-prompt-top">
-          <div class="passive-pulse-wrap"><span class="mini-pulse"></span><span>SMART MOTION &amp; DEVICE CHECK-IN</span></div>
-          <button class="tiny-link dark-ink-link" id="watchSyncBtn" type="button">Sync Watch / Steps ⌚</button>
-        </div>
-        <p class="passive-prompt-copy">We noticed a <strong>6.5 km morning trip</strong> (18 mins) &amp; <strong>14% phone battery use</strong>. Did you travel by driving today?</p>
-        <div class="quick-mode-pills" id="quickModePills" role="group" aria-label="Confirm how you moved today">
-          <button type="button" class="mode-pill active" data-mode="petrol_scooter">Petrol Scooter</button>
-          <button type="button" class="mode-pill" data-mode="auto_cng">Shared Auto</button>
-          <button type="button" class="mode-pill" data-mode="city_bus">City Bus</button>
-          <button type="button" class="mode-pill" data-mode="petrol_car">Petrol Car</button>
-          <button type="button" class="mode-pill" data-mode="ev_scooter">Electric Scooter</button>
-          <button type="button" class="mode-pill" data-mode="walking">Walked / Cycled</button>
-        </div>
-        <p class="mode-whisper" id="modeWhisper" hidden></p>
-      </div>
-
-      <div class="calculator-layout">
-        <div class="unified-rhythm-panel">
-          <div class="panel-topline">
-            <span>ADJUST TODAY'S RHYTHM</span>
-            <span class="sample-tag" id="preferredVehicleBadge">REMEMBERED · PETROL SCOOTER</span>
-          </div>
-
-          <div class="rhythm-row">
-            <div class="rhythm-row-head">
-              <div><h3>Getting around</h3><p id="travelSummaryLine">12.0 km today · Petrol scooter</p></div>
-              <strong class="rhythm-kg" id="travelKgLive">0.44 kg</strong>
-            </div>
-            <div class="rhythm-slider-wrap">
-              <input id="distanceSlider" class="range-slider" type="range" min="0" max="60" step="0.5" value="12" aria-label="Daily travel distance">
-              <div class="rhythm-subcontrols">
-                <span>0 km</span>
-                <label class="inline-check"><input type="checkbox" id="sharedRideCheck"><span>Shared ride / carpool</span></label>
-                <span>60 km</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="input-divider"></div>
-
-          <div class="rhythm-row">
-            <div class="rhythm-row-head">
-              <div><h3>Room power &amp; comfort</h3><p id="powerSummaryLine">Shared room · 4.0 kWh/day ÷ 3</p></div>
-              <strong class="rhythm-kg" id="powerKgLive">0.90 kg</strong>
-            </div>
-            <div class="chip-grid">
-              <label class="field"><span>Monthly units <small>KWH</small></span><input id="monthlyUnitsInput" type="number" min="0" max="5000" step="5" value="120"></label>
-              <label class="field"><span>Sharing room <small>PEOPLE</small></span><input id="roommatesInput" type="number" min="1" max="20" step="1" value="3"></label>
-              <label class="field"><span>AC hours today <small>HRS</small></span><input id="acHoursInput" type="number" min="0" max="24" step="0.5" value="0"></label>
-            </div>
-          </div>
-
-          <div class="input-divider"></div>
-
-          <div class="rhythm-row">
-            <div class="rhythm-row-head">
-              <div><h3>Your plate &amp; daily waste</h3><p id="foodWasteSummaryLine">Fresh local veg · Segregated waste</p></div>
-              <strong class="rhythm-kg" id="foodWasteKgLive">0.73 kg</strong>
-            </div>
-            <div class="plate-pills" id="dietPills" role="group" aria-label="Today's meals">
-              <button type="button" class="soft-pill active" data-diet="plant_local">Local Veg</button>
-              <button type="button" class="soft-pill" data-diet="lacto_dairy">High-Dairy</button>
-              <button type="button" class="soft-pill" data-diet="chicken_fish">Chicken / Fish</button>
-              <button type="button" class="soft-pill" data-diet="red_meat">Red Meat</button>
-            </div>
-            <div class="rhythm-subcontrols" style="margin-top:10px;">
-              <label class="inline-check"><input type="checkbox" id="segregatedWasteCheck" checked><span>Wet &amp; dry waste separated at source today</span></label>
-              <span class="micro-muted" id="wasteSavingsTag">Prevents 95% landfill methane</span>
-            </div>
-          </div>
-
-          <div class="input-divider"></div>
-
-          <div class="rhythm-row">
-            <div class="rhythm-row-head">
-              <div><h3>AI prompts &amp; screen time</h3><p>Phone battery is tiny — distant cloud servers do the heavy work</p></div>
-              <strong class="rhythm-kg" id="digitalKgLive">0.08 kg</strong>
-            </div>
-            <div class="chip-grid two-col">
-              <label class="field"><span>AI prompts today <small>CHATGPT / GEMINI</small></span><input id="aiPromptsInput" type="number" min="0" max="500" step="5" value="25"></label>
-              <label class="field"><span>Video streaming <small>HOURS</small></span><input id="streamHoursInput" type="number" min="0" max="16" step="0.5" value="1"></label>
-            </div>
-            <div class="battery-vs-cloud-bar">
-              <div class="bvc-labels">
-                <span>Your phone battery (<b id="phoneBatteryGrams">2.2 g</b>)</span>
-                <span>Cloud &amp; network (<b id="cloudServerGrams">81.8 g</b>)</span>
-              </div>
-              <div class="bvc-track">
-                <span class="bvc-battery" id="bvcBatteryBar" style="width: 3%"></span>
-                <span class="bvc-cloud" id="bvcCloudBar" style="width: 97%"></span>
-              </div>
-            </div>
-          </div>
-
-          <div class="authenticity-epigraph">
-            <p class="epigraph-quote">“Be authentic to yourself — and to the generation that will inherit your sky.”</p>
-            <div class="epigraph-meta">
-              <span id="cohortVerifyPill" class="cohort-verify-pill" hidden>◎ Linked with MITAOE EVS Cohort for peer verification</span>
-              <button id="resetDemoBtn" class="reset-button" type="button">Reset today ↺</button>
-            </div>
-          </div>
-        </div>
-
-        <aside class="result-panel" aria-live="polite">
-          <div class="result-orbit result-orbit-a"></div><div class="result-orbit result-orbit-b"></div>
-          <div class="result-head"><span>YOUR ECO SCORE</span><span class="result-leaf">✳</span></div>
-          <div class="result-number"><strong id="ecoScoreValue">784</strong><span>/ 1000<br><em id="ecoScoreTier">Thriving Green</em></span></div>
-          <div class="status-row">
-            <span class="status-dot" id="statusDot"></span>
-            <span id="statusLabel">21% LIGHTER THAN YESTERDAY</span>
-            <span class="status-context" id="studentTargetLabel">Personal ledger</span>
-          </div>
-          <div class="result-rule"></div>
-          <div class="yesterday-today-grid">
-            <div class="yt-box"><span>Yesterday</span><strong id="yesterdayKg">2.72 <small>kg</small></strong></div>
-            <div class="yt-box highlight"><span>Today</span><strong id="todayKg">2.15 <small>kg</small></strong></div>
-            <div class="yt-box"><span>Healed today</span><strong id="healedKg">+0.57 <small>kg</small></strong></div>
-          </div>
-          <div class="breakdown-title"><span>WHERE TODAY'S CO₂ CAME FROM</span><button type="button" class="tiny-link" id="formulaOpen">View Indian sources ↗</button></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Getting around</span><strong id="transportValue">0.44 kg</strong></div><div class="bar-track"><span id="transportBar" class="bar-fill fill-transport"></span></div></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Room power &amp; cooling</span><strong id="electricityValue">0.90 kg</strong></div><div class="bar-track"><span id="electricityBar" class="bar-fill fill-electricity"></span></div></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>Plate &amp; waste</span><strong id="foodWasteValue">0.73 kg</strong></div><div class="bar-track"><span id="foodWasteBar" class="bar-fill fill-waste"></span></div></div>
-          <div class="breakdown-item"><div class="breakdown-label"><span>AI cloud &amp; screen</span><strong id="digitalValue">0.08 kg</strong></div><div class="bar-track"><span id="digitalBar" class="bar-fill fill-digital"></span></div></div>
-          <button class="button button-light result-save" id="saveSnapshot" type="button">Save today's check-in <span>＋</span></button>
-          <p class="result-disclaimer">Next step: <a href="./heal.html" style="text-decoration:underline;color:#d8ead0;">Balance &amp; plant a tree →</a></p>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="brand footer-brand" href="./index.html"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span><span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span></a>
-      <p>Live lightly. Leave more room to grow.</p>
-      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+      <button onclick="document.getElementById('installModal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
     </div>
-  </footer>
 
-  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
-    <a href="./index.html"><span>🌱</span>Home</a>
-    <a href="./dashboard.html" class="active"><span>📊</span>Rhythm</a>
-    <a href="./heal.html"><span>🌳</span>Heal</a>
-    <a href="./circle.html"><span>🤝</span>Circle</a>
-    <a href="./studio.html"><span>☀️</span>Studio</a>
-  </nav>
-
-  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true" aria-label="Navigation and Android App">
-      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span><h3>CarbCalc Pages</h3></div><button class="drawer-close" id="menuDrawerClose" type="button">×</button></div>
-      <div class="drawer-nav-cards">
-        <a href="./index.html" class="drawer-nav-link"><span>01 · Welcome &amp; Account</span><span>→</span></a>
-        <a href="./dashboard.html" class="drawer-nav-link active"><span>02 · Today's Rhythm &amp; Score</span><span>→</span></a>
-        <a href="./heal.html" class="drawer-nav-link"><span>03 · Ways to Heal &amp; Plant a Tree</span><span>→</span></a>
-        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth Pulse</span><span>→</span></a>
-        <a href="./studio.html" class="drawer-nav-link"><span>05 · Solar Savings, Research Vault &amp; Journal</span><span>→</span></a>
+    <!-- Method 1: Instant 1-Tap PWA (Recommended) -->
+    <div class="p-5 rounded-2xl bg-secondary-container/30 border border-secondary/30 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary text-[11px] font-bold uppercase tracking-wider">Fastest & Reliable</span>
+        <span class="text-xs text-secondary font-bold">0 MB Storage</span>
       </div>
-      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span><p>Download the Capacitor-packaged APK build directly to your phone.</p><a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a></div>
-      <div class="drawer-apk-box"><span class="eyebrow">AMBIENT NUDGES</span><p>Preview the gentle anti-doomscroll reminder overlay.</p><button type="button" class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay ✦</button></div>
-    </aside>
-  </div>
-
-  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true" aria-label="Gentle notifications">
-      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span><h3>Eco Nudges</h3></div><button class="drawer-close" id="nudgeDrawerClose" type="button">×</button></div>
-      <div class="nudge-list" id="nudgeList"></div>
-      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small" id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
-    </aside>
-  </div>
-
-  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle" hidden>
-    <div class="ambient-card">
-      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
-      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
-      <p>On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging — reminding us that small local courage changes national history.</p>
-      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes of daylight (+15 Eco Score).</div>
-      <div class="ambient-actions"><button type="button" class="button button-primary button-small" id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button" id="ambientDismissBtn">Maybe later <span>→</span></button></div>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 1: Instant 1-Tap Web App</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Installs immediately directly to your Android/iOS home screen. Zero package parsing errors, launches in full-screen, and works 100% offline.</p>
+      </div>
+      <button onclick="triggerPwaInstall()" class="w-full py-3 rounded-xl bg-secondary text-on-secondary font-bold text-sm shadow hover:bg-secondary/90 transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">add_to_home_screen</span>
+        <span>Install to Home Screen Now</span>
+      </button>
     </div>
-  </div>
 
-  <div class="modal-backdrop" id="formulaModal" role="dialog" aria-modal="true" aria-labelledby="formulaTitle" hidden>
-    <div class="modal-card">
-      <button class="modal-close" type="button" id="formulaClose" aria-label="Close sources">×</button>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> VERIFIED INDIAN SOURCES</div>
-      <h2 id="formulaTitle">How your numbers<br><em>are grounded.</em></h2>
-      <div class="formula-list">
-        <div class="formula-row"><span>01 / TRANSPORT</span><strong>WRI India (2015) · ITF &amp; World Bank (2023) · MoHUA (2026)</strong><p>Petrol scooter 0.0368 kg/km, CNG shared auto 0.0359 kg/pkm, City bus 0.01516 kg/pkm, Petrol car 0.140 kg/km, plus ITF lifecycle battery shares (35–37%).</p></div>
-        <div class="formula-row"><span>02 / ELECTRICITY &amp; SOLAR</span><strong>CEA CO₂ Baseline Database v22.0 (Aug 2026, FY 2025-26)</strong><p>Official Indian grid weighted average of 0.675 kg CO₂/kWh (including renewables &amp; captive injection).</p></div>
-        <div class="formula-row"><span>03 / DIGITAL &amp; AI CLOUD</span><strong>Indian Academy of Sciences — Resonance (Dec 2025)</strong><p>Full phone charge emits ~14.2 g CO₂, while each AI prompt emits ~2.2 g CO₂e and HD streaming emits 27.6 g CO₂e/hr in cloud &amp; network servers.</p></div>
-        <div class="formula-row"><span>04 / PLATE &amp; WASTE</span><strong>CSBC Ashoka (2024) · Pathak et al. · CPCB</strong><p>Indian diets (0.724–1.303 kg CO₂e/day) and unsegregated (0.63 kg/kg) vs segregated compost (0.03 kg/kg).</p></div>
+    <!-- Method 2: Native Android APK -->
+    <div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-surface-container-highest text-primary text-[11px] font-bold uppercase tracking-wider">Capacitor Native APK</span>
+        <span class="text-xs text-on-surface-variant font-medium">Android 7.0+</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 2: Standalone Android APK</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Built with native Android Dalvik runtime & Capacitor. Compiled and cryptographically signed on GitHub CI.</p>
+      </div>
+      <div class="flex flex-col gap-2 pt-1">
+        <a href="https://github.com/PreetTank35/CarbCalc/releases/latest" target="_blank" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm shadow hover:bg-tertiary transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span>Download Verified APK from Releases</span>
+        </a>
+        <a href="https://github.com/PreetTank35/CarbCalc/actions" target="_blank" class="w-full py-2.5 rounded-xl bg-surface-container-highest text-primary font-semibold text-xs border border-outline-variant/40 hover:bg-surface-container transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[16px]">build_circle</span>
+          <span>View GitHub Actions Build Artifacts</span>
+        </a>
+      </div>
+      <div class="bg-surface-container p-3 rounded-xl text-[11px] text-on-surface-variant space-y-1">
+        <p class="font-bold text-primary">💡 If Android shows "Problem parsing package":</p>
+        <p>1. Ensure your browser is allowed to install apps in Android Settings.</p>
+        <p>2. Download the verified APK from GitHub Releases above.</p>
+        <p>3. Tap the file in Downloads to install.</p>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js" defer></script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn').forEach(el => el.classList.add('ring-2', 'ring-secondary'));
+});
+
+function triggerPwaInstall() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  } else {
+    alert('To install CarbCalc on your phone:\n\n1. In Chrome / Edge / Brave, tap the (⋮) menu button.\n2. Tap "Install app" or "Add to Home screen".\n3. Launches in full-screen with offline capabilities!');
+  }
+}
+
+function openInstallModal() {
+  const modal = document.getElementById('installModal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn, [data-install-trigger]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openInstallModal();
+  });
+});
+</script>
 </body>
 </html>

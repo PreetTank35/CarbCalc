@@ -6,6 +6,9 @@ package-lock.json
 jdk17/
 .gradle/
 *.zip
+carbonwise_suite/
+assemble_carbonwise.py
+release-output/
 
 # Android build outputs
 android/.gradle/

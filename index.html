@@ -1,290 +1,882 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173d30">
-  <meta name="description"
-    content="CarbCalc — your effortless eco companion for daily footprints, gentle nudges, and healing actions.">
-  <title>CarbCalc — Live Lightly, See Clearly</title>
-  <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Carbon Calculator & Daily Climate Care — CarbCalc</title>
+  <link rel="manifest" href="./manifest.webmanifest"/>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#003321",
+            "primary-container": "#164b35",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#85ba9e",
+            "primary-fixed": "#b8efd0",
+            "primary-fixed-dim": "#9dd2b5",
+            "secondary": "#006d3e",
+            "secondary-container": "#97f3b6",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#027241",
+            "secondary-fixed": "#9af6b9",
+            "secondary-fixed-dim": "#7ed99e",
+            "tertiary": "#1f3026",
+            "tertiary-container": "#35463b",
+            "tertiary-fixed": "#d4e7d9",
+            "surface": "#edfdf1",
+            "surface-dim": "#ceded2",
+            "surface-bright": "#edfdf1",
+            "surface-variant": "#d6e7da",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#e7f8eb",
+            "surface-container": "#e2f2e5",
+            "surface-container-high": "#dcece0",
+            "surface-container-highest": "#d6e7da",
+            "on-surface": "#111e17",
+            "on-surface-variant": "#404943",
+            "outline": "#717973",
+            "outline-variant": "#c0c9c1",
+            "surface-tint": "#356850",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+  </style>
 </head>
-
-<body data-page="welcome">
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <a class="brand" href="./index.html" aria-label="CarbCalc home">
-      <span class="brand-mark">
-        <svg viewBox="0 0 40 40" aria-hidden="true">
-          <path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z" />
-          <path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17" />
-        </svg>
-      </span>
-      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+<body class="bg-surface font-sans text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+  <div class="h-20 max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <a href="index.html" class="flex items-center gap-space-sm">
+      <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+        <span class="material-symbols-outlined text-[24px]">eco</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight font-bold">CarbCalc</span>
+        <span class="text-[11px] text-secondary uppercase tracking-widest font-bold">Campus Eco Companion</span>
+      </div>
     </a>
-
-    <nav class="page-nav" aria-label="Primary pages">
-      <a href="./index.html" class="active">Welcome</a>
-      <a href="./dashboard.html">Today's Rhythm</a>
-      <a href="./heal.html">Heal &amp; Plant</a>
-      <a href="./circle.html">Circle &amp; Pulse</a>
-      <a href="./studio.html">Solar &amp; Vault</a>
+    
+    <nav class="hidden xl:flex items-center gap-space-lg">
+      <a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" href="index.html">Home</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="calculator.html">Calculator</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="results.html">Results</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="heal.html">Action Plan</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="circle.html">Campus Circle</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="studio.html">Solar & Vault</a>
     </nav>
-
-    <div class="header-actions">
-      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk"
-        title="Download Android APK">
-        <span>⬇</span><span class="apk-btn-text">Get APK</span>
+    
+    <div class="flex items-center gap-space-xs sm:gap-space-sm">
+      <a href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-all border border-outline-variant/40" title="Download Android APK">
+        <span class="material-symbols-outlined text-[18px]">android</span>
+        <span>Get APK</span>
       </a>
-      <button class="profile-pill" id="profilePillBtn" type="button" title="Switch account mode">
-        <span class="profile-avatar" id="headerAvatar">A</span>
-        <span class="profile-meta">
-          <strong id="headerUserName">Atharv</strong>
-          <small id="headerScoreMini">784 pts</small>
+      <button id="pwaHeaderBtn" type="button" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md transition-all" title="Install 1-Tap App">
+        <span class="material-symbols-outlined text-[18px]">install_mobile</span>
+        <span>Install App</span>
+      </button>
+      <a href="calculator.html" class="inline-flex items-center justify-center px-4 py-2 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-xl shadow-sm transition-all active:scale-[0.98] font-bold">
+        Calculate
+      </a>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs text-on-primary">
+        <span class="material-symbols-outlined text-[18px]">person</span>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
+<div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin pt-6 lg:pt-14 pb-16 lg:pb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Column -->
+<div class="lg:col-span-7 flex flex-col gap-6 max-w-2xl">
+<!-- Badge -->
+<div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface-container w-fit text-primary border border-outline-variant/40 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase">Student Climate Action Platform • Free for Schools</span>
+</div>
+<!-- Headline -->
+<h1 class="text-[44px] sm:text-[54px] lg:text-[60px] leading-[1.08] font-headline-xl text-primary tracking-tight font-extrabold">
+          Your daily choices shape our planet's future.
+        </h1>
+<!-- Subtitle -->
+<p class="text-[17px] sm:text-[18px] leading-[28px] text-on-surface-variant font-normal">
+          Discover your carbon footprint, understand your environmental impact and take small steps towards a sustainable lifestyle.
+        </p>
+<!-- CTAs -->
+
+        <!-- Android APK + PWA Install Hub -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+          <a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-tertiary transition-all active:scale-[0.98] font-bold" href="calculator.html">
+            <span>Calculate my footprint</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+          <a class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-surface-container-lowest text-primary font-label-lg text-label-lg border border-outline-variant hover:border-surface-tint hover:bg-surface-container-low transition-all font-semibold" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">
+            <span class="material-symbols-outlined text-[20px] text-secondary">android</span>
+            <span>Download APK</span>
+          </a>
+          <button id="pwaHeroBtn" type="button" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-lg text-label-lg transition-all font-semibold">
+            <span class="material-symbols-outlined text-[20px]">install_mobile</span>
+            <span>Install 1-Tap App</span>
+          </button>
+        </div>
+
+        <!-- Social Proof / Student Metric -->
+<div class="flex items-center gap-4 pt-4">
+<div class="flex -space-x-2.5 overflow-hidden">
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-surface object-cover" data-alt="Close up portrait of smiling teenage female high school student in green sweater outside campus greenhouse natural morning lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8qRyw8bPIZkbXb4e05sRCMJ7gUrJiQ8_yM6r6uiG71_0jj59JHyFZasbbU2Np1ekVeY6oDDIdqzAz44ryDd18wpYou3A2o5n_DQZ_ogKYHWE4ttFg2nY-YPTldpWdXzGao2QK_UoZKsNtsuOtD2MrTKiO9bFlrdjTp2yj66hzIqGd8yr0ynzfGVKv5BPoeInfff4eEKZWl1lIyY6h6XJLzvBDYFsh5exfsXICGkRG"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-surface object-cover" data-alt="Portrait of young collegiate male student holding notebook on sustainable campus lawn sunny soft depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqh3QUAOwGkoc6fvwCnK6PrvM7CaDr4NQ17WuLe0m_n10v3rjJ9sbaBRKYuYyImSAIetcukN2R2TLpQUknAqagKvksmvtpXE0xgAYJiAigqWejZfLMFWLggyJD_Ghovj7mLLXGkiu1A3mVOAsxXbjbgIuzrezIOmVFTcwvyUju0ie4O8LlcpwMaVzTy1VgfyaZeLGkX3fGKeYtITpdmHTrwV0ZkPo6iUbS1-qftzI6"/>
+<img class="inline-block h-10 w-10 rounded-full ring-2 ring-surface object-cover" data-alt="Portrait of diverse student smiling in school science classroom working on climate project vibrant eco lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwGrUE-QGz_Vv2nocfLOi9irKSpW7z7I3zb05rqmN4bOXyW6TkE1uN7awmADOwEjWhTlboXdYpi1fW5TGpmhsg4wXycA_i84_URT8akrMV68xOgUEsGKN4HR5vCDqHo5N0bfhLX618UU4QNsCmel-hpBsK15slhqEmKcK1rIENdDsnljd2124n09xFy6gF4honi-va-rU299Lm-O_Bt9D7ZilDBY76L21gtJbss5Fv"/>
+<div class="inline-flex items-center justify-center h-10 w-10 rounded-full ring-2 ring-surface bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold">
+              +85
+            </div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">
+              Joined by <span class="font-semibold text-on-surface">14,200+ students</span> across 85 schools this semester
+            </p>
+</div>
+</div>
+</div>
+<!-- Right Column: 3D Visualization & Floating Badges -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<!-- Glowing backdrop -->
+<div class="absolute inset-4 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute -bottom-6 -right-6 w-56 h-56 rounded-full bg-primary-fixed/50 blur-2xl pointer-events-none -z-10"></div>
+<!-- 3D Earth Animation Scene -->
+<div class="w-full relative rounded-3xl overflow-visible p-2">
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="w-full h-[520px] bg-transparent" -->
+<div class="w-full h-[520px] bg-transparent" style="display:block;">
+<script src="./three.min.js"></script>
+<script>
+if (typeof THREE === 'undefined') {
+  document.write('<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"><\/script>');
+}
+</script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Three.js interactive 3D Earth with delicate green continents, atmosphere glow, and gentle rotation
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.z = 2.8;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Group to hold Earth and decorative orbital rings
+const earthGroup = new THREE.Group();
+scene.add(earthGroup);
+
+// Ambient & Directional Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+scene.add(ambientLight);
+
+const dirLight1 = new THREE.DirectionalLight(0xdcfce7, 1.4);
+dirLight1.position.set(4, 3, 5);
+scene.add(dirLight1);
+
+const dirLight2 = new THREE.DirectionalLight(0x164b35, 0.6);
+dirLight2.position.set(-4, -2, -3);
+scene.add(dirLight2);
+
+// Earth Base Sphere (Oceans - subtle soft sage/mint tint)
+const sphereGeo = new THREE.SphereGeometry(1, 64, 64);
+const oceanMat = new THREE.MeshPhongMaterial({
+  color: 0xebf6ee,
+  emissive: 0x164b35,
+  emissiveIntensity: 0.05,
+  shininess: 25,
+  specular: 0x278653,
+  transparent: true,
+  opacity: 0.95
+});
+const oceanMesh = new THREE.Mesh(sphereGeo, oceanMat);
+earthGroup.add(oceanMesh);
+
+// Continents / Green Landmasses Procedural Canvas Texture
+const canvas = document.createElement('canvas');
+canvas.width = 1024;
+canvas.height = 512;
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = '#ebf6ee';
+ctx.fillRect(0, 0, 1024, 512);
+
+// Draw stylized geometric continents in brand greens #164B35 & #278653
+ctx.fillStyle = '#278653';
+// Simplified landmass blobs
+function drawLand(x, y, w, h, rad) {
+  ctx.beginPath();
+  ctx.ellipse(x, y, w, h, rad, 0, Math.PI * 2);
+  ctx.fill();
+}
+// North America
+drawLand(250, 160, 90, 60, 0.2);
+drawLand(280, 200, 50, 40, -0.1);
+// South America
+drawLand(330, 320, 60, 90, 0.3);
+// Europe
+drawLand(520, 150, 50, 40, 0);
+// Africa
+drawLand(540, 270, 70, 90, 0.1);
+// Asia
+drawLand(680, 160, 120, 70, -0.1);
+drawLand(750, 220, 80, 50, 0.2);
+// Australia
+drawLand(830, 350, 60, 45, 0);
+
+// Forest Green topographic contours
+ctx.strokeStyle = '#164B35';
+ctx.lineWidth = 4;
+for (let i = 0; i < 15; i++) {
+  ctx.beginPath();
+  ctx.arc(200 + i * 45, 150 + Math.sin(i) * 60, 25, 0, Math.PI * 1.5);
+  ctx.stroke();
+}
+
+const texture = new THREE.CanvasTexture(canvas);
+const landMat = new THREE.MeshLambertMaterial({
+  map: texture,
+  transparent: true,
+  opacity: 0.92
+});
+const landMesh = new THREE.Mesh(sphereGeo, landMat);
+earthGroup.add(landMesh);
+
+// Thin luminous atmospheric glow rim
+const glowGeo = new THREE.SphereGeometry(1.05, 32, 32);
+const glowMat = new THREE.MeshBasicMaterial({
+  color: 0x278653,
+  transparent: true,
+  opacity: 0.12,
+  wireframe: true
+});
+const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+earthGroup.add(glowMesh);
+
+// Orbital Ring (Eco Tech Minimal Ring)
+const ringGeo = new THREE.RingGeometry(1.3, 1.33, 64);
+const ringMat = new THREE.MeshBasicMaterial({
+  color: 0x278653,
+  side: THREE.DoubleSide,
+  transparent: true,
+  opacity: 0.35
+});
+const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+ringMesh.rotation.x = Math.PI / 2.3;
+ringMesh.rotation.y = 0.2;
+earthGroup.add(ringMesh);
+
+// Floating Data Nodes / Satellites on orbit
+const nodeGeo = new THREE.SphereGeometry(0.04, 16, 16);
+const nodeMat = new THREE.MeshBasicMaterial({ color: 0x164b35 });
+const node1 = new THREE.Mesh(nodeGeo, nodeMat);
+node1.position.set(1.32, 0, 0);
+ringMesh.add(node1);
+
+const node2 = new THREE.Mesh(nodeGeo, new THREE.MeshBasicMaterial({ color: 0x278653 }));
+node2.position.set(-1.32, 0, 0);
+ringMesh.add(node2);
+
+// Mouse interaction
+let mouseX = 0, mouseY = 0;
+let targetX = 0, targetY = 0;
+window.addEventListener('mousemove', (e) => {
+  mouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
+  mouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
+});
+
+// Resize handler
+window.addEventListener('resize', () => {
+  const w = container.clientWidth || window.innerWidth;
+  const h = container.clientHeight || window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+// Animation loop
+earthGroup.rotation.y = 0.5;
+function animate() {
+  requestAnimationFrame(animate);
+  earthGroup.rotation.y += 0.003;
+  ringMesh.rotation.z += 0.002;
+
+  targetX += (mouseX - targetX) * 0.05;
+  targetY += (mouseY - targetY) * 0.05;
+  earthGroup.rotation.x = targetY;
+  earthGroup.position.x = targetX * 0.5;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+<!-- Floating Badge: Top Right -->
+<div class="absolute top-4 right-0 sm:-right-4 bg-surface-container-lowest/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-outline-variant/60 shadow-lg flex items-center gap-3 max-w-[240px] transform hover:-translate-y-1 transition-transform">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">trending_down</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider font-semibold">Live Campus Avg</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">2.1 <span class="text-sm font-normal text-on-surface-variant">t CO₂e/yr</span></span>
+</div>
+</div>
+<!-- Floating Badge: Bottom Left -->
+<div class="absolute bottom-4 left-0 sm:-left-6 bg-surface-container-lowest/95 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-outline-variant/60 shadow-lg flex items-center gap-3.5 max-w-[270px] transform hover:-translate-y-1 transition-transform">
+<div class="w-11 h-11 rounded-xl bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">energy_savings_leaf</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Student Pledges</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">
+<strong class="text-primary font-bold">8.4k kg</strong> avoided emissions logged this month
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: WHY CARBON FOOTPRINT MATTERS -->
+<section class="w-full bg-surface-container-low py-16 lg:py-24 border-y border-outline-variant/40">
+<div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex flex-col gap-12">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto flex flex-col items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm uppercase tracking-widest font-bold">
+          Climate Literacy
         </span>
-      </button>
-      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges">
-        <span class="bell-halo" aria-hidden="true"></span>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z" />
-          <path d="M10.3 20a2 2 0 0 0 3.4 0" />
-        </svg>
-        <span class="bell-badge" id="bellBadge">3</span>
-      </button>
-      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z" />
-        </svg>
-      </button>
-      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button">
-        <span class="menu-lines"><span></span><span></span></span>
-        <span class="menu-label">Menu</span>
-      </button>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">
+          Understanding your personal impact
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Small personal changes compound across high schools and universities into measurable carbon reductions.
+        </p>
+</div>
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">public</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-[38px] leading-tight font-extrabold text-primary">16t</span>
+<span class="font-label-md text-label-md text-on-surface-variant">US avg vs.</span>
+<span class="text-[26px] font-bold text-secondary">2t</span>
+<span class="font-label-md text-label-md text-secondary">target</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              The average American carbon footprint is 16 tonnes per person. To limit climate warming by 2030, global targets require under 2 tonnes per year.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-secondary font-label-sm text-label-sm font-semibold">
+<span>2030 Climate Accord</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">school</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-[38px] leading-tight font-extrabold text-primary">73%</span>
+<span class="font-label-md text-label-md text-on-surface-variant">of campus scope</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Up to 73% of indirect educational emissions stem directly from student daily commuting, food selection, energy consumption, and campus waste habits.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-secondary font-label-sm text-label-sm font-semibold">
+<span>Scope 3 Educational Impact</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-7 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">park</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-[38px] leading-tight font-extrabold text-primary">-0.5t</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">= 25 trees</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Every 0.5 tonne reduction in student annual emissions delivers the carbon offset equivalent of nurturing 25 mature native pine and oak trees for a full year.
+            </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/40 flex items-center justify-between text-secondary font-label-sm text-label-sm font-semibold">
+<span>Equivalency Benchmark</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: HOW CARBONWISE WORKS -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin py-16 lg:py-24">
+<div class="flex flex-col gap-14">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col gap-2 max-w-xl">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-bold">Structured Assessment</span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">How CarbonWise Works</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            A frictionless three-step workflow designed by university climate researchers to turn abstract data into student empowerment.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Standardized with:</span>
+<span class="px-2.5 py-1 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-bold">GHG Protocol</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Step 1 -->
+<div class="relative bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between group hover:border-surface-tint transition-all">
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<span class="text-[32px] font-extrabold text-primary-fixed-dim group-hover:text-secondary transition-colors">01</span>
+<div class="w-10 h-10 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Track your lifestyle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Complete a 5-minute intuitive student questionnaire covering transportation routines, campus tech &amp; device power, cafeteria food choices, and study habits.
+            </p>
+</div>
+<div class="mt-8 pt-4 border-t border-outline-variant/40 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Zero private data collected</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between group hover:border-surface-tint transition-all">
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<span class="text-[32px] font-extrabold text-primary-fixed-dim group-hover:text-secondary transition-colors">02</span>
+<div class="w-10 h-10 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Understand your impact</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Get an instant breakdown of your tonnes CO₂e per category, visualised against regional student averages, national averages, and the global 2030 budget.
+            </p>
+</div>
+<div class="mt-8 pt-4 border-t border-outline-variant/40 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">donut_large</span>
+<span>Real-time emission charts</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between group hover:border-surface-tint transition-all">
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<span class="text-[32px] font-extrabold text-primary-fixed-dim group-hover:text-secondary transition-colors">03</span>
+<div class="w-10 h-10 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Make sustainable changes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Unlock personalized, manageable daily micro-actions, enroll in collective school challenges, and log weekly progress alongside your campus peers.
+            </p>
+</div>
+<div class="mt-8 pt-4 border-t border-outline-variant/40 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">emoji_events</span>
+<span>Earn verified micro-badges</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: WHAT STUDENTS CAN MEASURE -->
+<section class="w-full bg-surface-container-low/60 py-16 lg:py-24 border-y border-outline-variant/40">
+<div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex flex-col gap-12">
+<div class="text-center max-w-2xl mx-auto flex flex-col items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-secondary font-label-sm text-label-sm uppercase tracking-widest font-bold">
+          Scope Coverage
+        </span>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight font-bold">
+          What students can measure
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Four concrete categories built around real campus life realities, not distant industrial metrics.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Transportation -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant shadow-sm flex flex-col gap-4 hover:-translate-y-1 transition-transform">
+<div class="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">directions_bus</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Transportation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Evaluate school bus routes, personal walking habits, cycling commutes, transit trains, and carpooling offsets.
+          </p>
+<div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Bus Transit</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Biking</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Carpool</span>
+</div>
+</div>
+<!-- Electricity & Tech -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant shadow-sm flex flex-col gap-4 hover:-translate-y-1 transition-transform">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">devices</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Electricity &amp; Tech</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Audit laptop usage, smart classroom devices, phantom plug loads, overnight dorm heating, and charging cycles.
+          </p>
+<div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Gadget Load</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Dorm Energy</span>
+</div>
+</div>
+<!-- Food & Cafeteria -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant shadow-sm flex flex-col gap-4 hover:-translate-y-1 transition-transform">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">restaurant</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Food &amp; Cafeteria</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Measure cafeteria meal selections, plant-based substitutions, regional farm ingredients, and post-lunch organic waste.
+          </p>
+<div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Plant-Based</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Compost</span>
+</div>
+</div>
+<!-- Daily Consumption -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant shadow-sm flex flex-col gap-4 hover:-translate-y-1 transition-transform">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container text-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Daily Consumption</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Track apparel cycles, thrifted items, digital vs printed textbooks, stationery recycling, and personal hydration habits.
+          </p>
+<div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Upcycling</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Paperless</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FEATURED SUSTAINABILITY TIPS & CHALLENGES -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin py-16 lg:py-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Challenge Card: Zero Food Waste Week -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl p-7 lg:p-8 border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Active Campus Challenge</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Ends in 4 days</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline-md text-headline-md text-primary font-bold">Zero Food Waste Week</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              High schools across the county are competing to eliminate dining hall organics from landfills by prioritizing balanced cafeteria tray portions and compost bins.
+            </p>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2.5 pt-2">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md text-primary font-semibold">Campus Participation Goal</span>
+<span class="font-label-md text-label-md text-secondary font-bold">78% reached (3,900 / 5,000 students)</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-label-sm font-bold">
+              #1
+            </div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Leading School: Oakridge Collegiate (94% logged)</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:text-primary font-bold flex items-center gap-1" href="circle.html">
+<span>Join challenge</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Challenge Card: Badge Preview & Tips -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Badge Preview Box -->
+<div class="bg-secondary-container/40 rounded-2xl p-6 border border-surface-tint/30 flex items-center gap-5">
+<div class="w-16 h-16 rounded-2xl bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px]">pedal_bike</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-bold uppercase">Upcoming</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">+120 EcoPts</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">Bike to School Wednesday</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Log clean miles on two wheels or foot to earn the Golden Spoke badge.</p>
+</div>
+</div>
+<!-- Quick micro-habit quote -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant shadow-sm flex flex-col gap-3">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider">Quick Micro-Habit</span>
+</div>
+<p class="font-body-md text-body-md text-primary font-medium italic">
+            "Switching just one beef burger to a grain bowl a week saves 340 miles worth of car carbon equivalents over your academic school year."
+          </p>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Source: Stanford Campus Sustainability Resource</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CALL TO ACTION BANNER -->
+<section class="w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin pb-16 lg:pb-24">
+<div class="bg-primary rounded-3xl p-8 sm:p-12 lg:p-16 text-on-primary relative overflow-hidden shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+<!-- Decorative background circles -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-secondary/30 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-secondary-container/10 blur-2xl pointer-events-none"></div>
+<div class="flex flex-col gap-3 max-w-xl relative z-10 text-center lg:text-left">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold">
+          Empowering Next-Gen Leaders
+        </span>
+<h2 class="text-[32px] sm:text-[40px] leading-tight font-headline-xl font-bold text-on-primary">
+          Ready to discover your environmental footprint?
+        </h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim">
+          No signup required to calculate. Takes just 4 minutes to receive your customized campus action breakdown.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-surface-container-lowest text-primary font-label-lg text-label-lg font-bold shadow-md hover:bg-surface-container-low transition-all active:scale-[0.98]" href="calculator.html">
+<span>Start Free Calculator Now</span>
+<span class="material-symbols-outlined text-[20px] text-primary">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/50 pt-space-xl pb-space-lg">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl pb-space-xl border-b border-outline-variant/40">
+      <div class="md:col-span-6 flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">eco</span>
+          </div>
+          <span class="font-headline-sm text-headline-sm text-primary font-bold">CarbCalc</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Effortless daily climate care for students and campuses. Backed by verified Indian grid, transport, and solar datasets (CEA 2026, WRI India, MNRE).
+        </p>
+        <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-highest w-fit">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">MITAOE Alandi Cohort Sync • CEA 2026 Grid 0.675 kg/kWh</span>
+        </div>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Platform</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Home</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="calculator.html">Carbon Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="results.html">Results & Benchmark</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="heal.html">Action Plan & Tree Plant</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="circle.html">Campus Challenges</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Research & Downloads</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html">PM Surya Ghar Solar Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html#vault">CEA & WRI India Research Vault</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download Android APK</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com/PreetTank35/CarbCalc.git" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
-
-  <main>
-    <section class="hero-bento section-shell">
-      <!-- Left Full-Height Neumorphic Card -->
-      <div class="hero-main-card">
+    <div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+      <p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 CarbCalc Academic Initiative • MIT Academy of Engineering, Alandi.</p>
+      <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+        <span class="material-symbols-outlined text-[16px]">verified</span>
+        <span>GHG Protocol Scope 1-3 Youth Framework</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<nav class="xl:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
+  <div class="h-16 px-space-xs flex items-center justify-around">
+    <a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-secondary font-bold" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span><span class="text-[11px] font-bold">Home</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="calculator.html"><span class="material-symbols-outlined text-[22px]">add_chart</span><span class="text-[11px]">Calculate</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="results.html"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="text-[11px]">Results</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="heal.html"><span class="material-symbols-outlined text-[22px]">task_alt</span><span class="text-[11px]">Action</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="circle.html"><span class="material-symbols-outlined text-[22px]">group</span><span class="text-[11px]">Circle</span></a>
+  </div>
+</nav>
+<!-- Install Modal -->
+<div id="installModal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-outline-variant/60 flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between pb-3 border-b border-outline-variant/40">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">install_mobile</span>
+        </div>
         <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span> EFFORTLESS DAILY CLIMATE CARE</div>
-          <h1>Make your <em>impact visible.</em></h1>
-          <p class="hero-lede">Most calculators wait for you to type every number by hand. CarbCalc quietly senses your daily rhythm, turns it into clarity, and invites small acts that heal.</p>
-        </div>
-
-        <!-- Interactive Account & Cohort Selector -->
-        <div class="neu-inset-panel">
-          <div class="entry-primary-row">
-            <button class="button button-primary" id="enterGeneralBtn" type="button">Continue with General Account <span>→</span></button>
-            <button class="text-button" id="toggleStudentOption" type="button" aria-expanded="false">Are you a student? <span>↘</span></button>
-          </div>
-
-          <div class="student-connector" id="studentConnector" hidden>
-            <div class="student-fields">
-              <label class="field">
-                <span>Your name</span>
-                <input id="loginNameInput" type="text" maxlength="40" value="Atharv" placeholder="Enter your name">
-              </label>
-              <label class="field">
-                <span>Institution group</span>
-                <select id="institutionSelect">
-                  <option value="MITAOE Alandi · EVS IT SY-C">MIT Academy of Engineering · EVS IT SY-C</option>
-                  <option value="Pune Eco-Campus Collective">Pune Eco-Campus Collective</option>
-                  <option value="National Green Youth Circle">National Green Youth Circle</option>
-                </select>
-              </label>
-            </div>
-            <div class="student-connector-foot">
-              <span class="cohort-note">Connects your Eco Score to your institution's EVS benchmark (750 pts) for peer verification.</span>
-              <button class="button button-primary button-small" id="enterStudentBtn" type="button">Join Student Group <span>→</span></button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dual Android Install Hub: Direct APK + 1-Tap PWA -->
-        <div class="apk-install-hub">
-          <div class="install-channel-card">
-            <div class="channel-head">
-              <div class="channel-icon" aria-hidden="true">🤖</div>
-              <div class="channel-title">
-                <b>Android APK Package</b>
-                <small>Native Capacitor Bundle (Android 9+)</small>
-              </div>
-            </div>
-            <div class="install-action-row">
-              <span class="badge-clean">Direct APK</span>
-              <a class="button button-primary button-small" id="heroApkBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">
-                Download APK <span>↓</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="install-channel-card">
-            <div class="channel-head">
-              <div class="channel-icon" aria-hidden="true">⚡</div>
-              <div class="channel-title">
-                <b>1-Tap Web App (PWA)</b>
-                <small>Install instantly via Chrome / Edge</small>
-              </div>
-            </div>
-            <div class="install-action-row">
-              <span class="badge-clean">Zero Parse Errors</span>
-              <button class="button button-neu button-small" id="pwaDirectInstallBtn" type="button">
-                Install App <span>＋</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4-Tile Verified Research Fact Strip -->
-        <div class="hero-fact-grid">
-          <div class="fact-tile"><strong>0.675 kg</strong><span>CEA 2026 India grid CO₂/kWh</span></div>
-          <div class="fact-tile"><strong>22–40 kg</strong><span>Native Neem/Bamboo CO₂/yr</span></div>
-          <div class="fact-tile"><strong>14g vs 66g</strong><span>Phone charge vs 30 AI prompts</span></div>
-          <div class="fact-tile"><strong>95% less</strong><span>Methane on segregated waste</span></div>
+          <h3 class="text-xl font-bold text-primary">Install CarbCalc App</h3>
+          <p class="text-xs text-on-surface-variant">Choose your preferred installation method</p>
         </div>
       </div>
-
-      <!-- Right Full-Height Neumorphic Visual & Launcher Card -->
-      <div class="hero-visual-card">
-        <div class="hero-orb-stage" aria-label="Illustration of a leaf growing from a circular earth motif">
-          <div class="art-orbit orbit-one"></div>
-          <div class="art-orbit orbit-two"></div>
-          <div class="art-sun"></div>
-          <div class="art-earth">
-            <div class="earth-land land-one"></div>
-            <div class="earth-land land-two"></div>
-            <div class="earth-land land-three"></div>
-            <div class="earth-shine"></div>
-          </div>
-          <svg class="hero-sprout" viewBox="0 0 300 330" fill="none" aria-hidden="true">
-            <path d="M147 293c-8-48-5-94 13-137" stroke="#244d37" stroke-width="4" stroke-linecap="round" />
-            <path d="M158 164c-45-3-76-28-73-74 39-4 78 17 73 74Z" fill="#759D69" stroke="#244d37" stroke-width="3" />
-            <path d="M158 164c7-47 34-77 79-72 2 41-25 76-79 72Z" fill="#B4C99B" stroke="#244d37" stroke-width="3" />
-            <path d="M157 159c-20-27-38-43-62-57M162 155c22-22 43-39 65-49" stroke="#244d37" stroke-width="2" stroke-linecap="round" />
-            <path d="M143 294c-14-20-31-26-49-22 8 22 25 33 49 22ZM150 294c13-22 32-29 52-23-7 23-25 34-52 23Z" fill="#D1DDBF" stroke="#244d37" stroke-width="2" />
-            <path d="M147 293c0 12-1 20-3 28" stroke="#244d37" stroke-width="3" stroke-linecap="round" />
-          </svg>
-          <div class="art-label label-top"><span class="label-icon">↗</span><span>SMALL STEPS<br><b>REAL CHANGE</b></span></div>
-          <div class="art-label label-bottom"><span class="mini-pulse"></span> AUTO-SENSE &amp; HEAL</div>
-        </div>
-
-        <div class="module-launcher-grid">
-          <a href="./dashboard.html" class="module-tile">
-            <div class="module-tile-top"><span>01 / RHYTHM</span><span>→</span></div>
-            <b>Today's Footprint</b>
-            <small>Passive commute check-in, room power &amp; AI cloud impact</small>
-          </a>
-          <a href="./heal.html" class="module-tile">
-            <div class="module-tile-top"><span>02 / HEAL</span><span>→</span></div>
-            <b>Plant &amp; Balance</b>
-            <small>Optical sapling check-ins &amp; daily carbon-saving shifts</small>
-          </a>
-          <a href="./circle.html" class="module-tile">
-            <div class="module-tile-top"><span>03 / BELONG</span><span>→</span></div>
-            <b>Campus Circle</b>
-            <small>MITAOE EVS cohort score &amp; Earth Pulse stories</small>
-          </a>
-          <a href="./studio.html" class="module-tile">
-            <div class="module-tile-top"><span>04 / STUDIO</span><span>→</span></div>
-            <b>Solar &amp; Vault</b>
-            <small>Rooftop solar bill savings, research docs &amp; field log</small>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="brand footer-brand" href="./index.html">
-        <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true">
-            <path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z" />
-            <path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17" />
-          </svg></span>
-        <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
-      </a>
-      <p>Live lightly. Leave more room to grow.</p>
-      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+      <button onclick="document.getElementById('installModal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
     </div>
-  </footer>
 
-  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
-    <a href="./index.html" class="active"><span>🌱</span>Home</a>
-    <a href="./dashboard.html"><span>📊</span>Rhythm</a>
-    <a href="./heal.html"><span>🌳</span>Heal</a>
-    <a href="./circle.html"><span>🤝</span>Circle</a>
-    <a href="./studio.html"><span>☀️</span>Studio</a>
-  </nav>
+    <!-- Method 1: Instant 1-Tap PWA (Recommended) -->
+    <div class="p-5 rounded-2xl bg-secondary-container/30 border border-secondary/30 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary text-[11px] font-bold uppercase tracking-wider">Fastest & Reliable</span>
+        <span class="text-xs text-secondary font-bold">0 MB Storage</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 1: Instant 1-Tap Web App</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Installs immediately directly to your Android/iOS home screen. Zero package parsing errors, launches in full-screen, and works 100% offline.</p>
+      </div>
+      <button onclick="triggerPwaInstall()" class="w-full py-3 rounded-xl bg-secondary text-on-secondary font-bold text-sm shadow hover:bg-secondary/90 transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">add_to_home_screen</span>
+        <span>Install to Home Screen Now</span>
+      </button>
+    </div>
 
-  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true"
-      aria-label="Navigation and Android App">
-      <div class="drawer-header">
-        <div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span>
-          <h3>CarbCalc Pages</h3>
-        </div><button class="drawer-close" id="menuDrawerClose" type="button" aria-label="Close menu">×</button>
+    <!-- Method 2: Native Android APK -->
+    <div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-surface-container-highest text-primary text-[11px] font-bold uppercase tracking-wider">Capacitor Native APK</span>
+        <span class="text-xs text-on-surface-variant font-medium">Android 7.0+</span>
       </div>
-      <div class="drawer-nav-cards">
-        <a href="./index.html" class="drawer-nav-link active"><span>01 · Welcome &amp; Account</span><span>→</span></a>
-        <a href="./dashboard.html" class="drawer-nav-link"><span>02 · Today's Rhythm &amp;
-            Score</span><span>→</span></a>
-        <a href="./heal.html" class="drawer-nav-link"><span>03 · Ways to Heal &amp; Plant a
-            Tree</span><span>→</span></a>
-        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth
-            Pulse</span><span>→</span></a>
-        <a href="./studio.html" class="drawer-nav-link"><span>05 · Solar Savings, Research Vault &amp;
-            Journal</span><span>→</span></a>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 2: Standalone Android APK</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Built with native Android Dalvik runtime & Capacitor. Compiled and cryptographically signed on GitHub CI.</p>
       </div>
-      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span>
-        <p>Download the Capacitor-packaged APK build directly to your phone.</p><a
-          class="button button-primary button-small" href="./CarbCalc-Android.apk"
-          download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a>
+      <div class="flex flex-col gap-2 pt-1">
+        <a href="https://github.com/PreetTank35/CarbCalc/releases/latest" target="_blank" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm shadow hover:bg-tertiary transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span>Download Verified APK from Releases</span>
+        </a>
+        <a href="https://github.com/PreetTank35/CarbCalc/actions" target="_blank" class="w-full py-2.5 rounded-xl bg-surface-container-highest text-primary font-semibold text-xs border border-outline-variant/40 hover:bg-surface-container transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[16px]">build_circle</span>
+          <span>View GitHub Actions Build Artifacts</span>
+        </a>
       </div>
-      <div class="drawer-apk-box"><span class="eyebrow">AMBIENT NUDGES</span>
-        <p>Preview the gentle anti-doomscroll reminder overlay.</p><button type="button"
-          class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay ✦</button>
+      <div class="bg-surface-container p-3 rounded-xl text-[11px] text-on-surface-variant space-y-1">
+        <p class="font-bold text-primary">💡 If Android shows "Problem parsing package":</p>
+        <p>1. Ensure your browser is allowed to install apps in Android Settings.</p>
+        <p>2. Download the verified APK from GitHub Releases above.</p>
+        <p>3. Tap the file in Downloads to install.</p>
       </div>
-    </aside>
-  </div>
-
-  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true"
-      aria-label="Gentle notifications">
-      <div class="drawer-header">
-        <div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span>
-          <h3>Eco Nudges</h3>
-        </div><button class="drawer-close" id="nudgeDrawerClose" type="button"
-          aria-label="Close notifications">×</button>
-      </div>
-      <div class="nudge-list" id="nudgeList"></div>
-      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small"
-          id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
-    </aside>
-  </div>
-
-  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle"
-    hidden>
-    <div class="ambient-card">
-      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
-      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
-      <p id="ambientBody">On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging —
-        reminding us that small local courage changes national history.</p>
-      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes
-        of daylight (+15 Eco Score).</div>
-      <div class="ambient-actions"><button type="button" class="button button-primary button-small"
-          id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button"
-          id="ambientDismissBtn">Maybe later <span>→</span></button></div>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js" defer></script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn').forEach(el => el.classList.add('ring-2', 'ring-secondary'));
+});
+
+function triggerPwaInstall() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  } else {
+    alert('To install CarbCalc on your phone:\n\n1. In Chrome / Edge / Brave, tap the (⋮) menu button.\n2. Tap "Install app" or "Add to Home screen".\n3. Launches in full-screen with offline capabilities!');
+  }
+}
+
+function openInstallModal() {
+  const modal = document.getElementById('installModal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn, [data-install-trigger]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openInstallModal();
+  });
+});
+</script>
 </body>
-
 </html>

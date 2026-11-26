@@ -1,170 +1,747 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173d30">
-  <title>Ways to Heal &amp; Plant — CarbCalc</title>
-  <link rel="icon" href="./icon.svg" type="image/svg+xml">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./styles.css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Personalized Climate Action Plan — CarbCalc</title>
+  <link rel="manifest" href="./manifest.webmanifest"/>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#003321",
+            "primary-container": "#164b35",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#85ba9e",
+            "primary-fixed": "#b8efd0",
+            "primary-fixed-dim": "#9dd2b5",
+            "secondary": "#006d3e",
+            "secondary-container": "#97f3b6",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#027241",
+            "secondary-fixed": "#9af6b9",
+            "secondary-fixed-dim": "#7ed99e",
+            "tertiary": "#1f3026",
+            "tertiary-container": "#35463b",
+            "tertiary-fixed": "#d4e7d9",
+            "surface": "#edfdf1",
+            "surface-dim": "#ceded2",
+            "surface-bright": "#edfdf1",
+            "surface-variant": "#d6e7da",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#e7f8eb",
+            "surface-container": "#e2f2e5",
+            "surface-container-high": "#dcece0",
+            "surface-container-highest": "#d6e7da",
+            "on-surface": "#111e17",
+            "on-surface-variant": "#404943",
+            "outline": "#717973",
+            "outline-variant": "#c0c9c1",
+            "surface-tint": "#356850",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+  </style>
 </head>
-<body data-page="heal">
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="site-header">
-    <a class="brand" href="./index.html" aria-label="CarbCalc home">
-      <span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span>
-      <span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span>
+<body class="bg-surface font-sans text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container min-h-screen flex flex-col">
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/60 shadow-[0_1px_8px_rgba(0,0,0,0.02)]">
+  <div class="h-20 max-w-[1280px] mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <a href="index.html" class="flex items-center gap-space-sm">
+      <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shadow-sm">
+        <span class="material-symbols-outlined text-[24px]">eco</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight font-bold">CarbCalc</span>
+        <span class="text-[11px] text-secondary uppercase tracking-widest font-bold">Campus Eco Companion</span>
+      </div>
     </a>
-
-    <nav class="page-nav" aria-label="Primary pages">
-      <a href="./index.html">Welcome</a>
-      <a href="./dashboard.html">Today's Rhythm</a>
-      <a href="./heal.html" class="active">Heal &amp; Plant</a>
-      <a href="./circle.html">Circle &amp; Pulse</a>
-      <a href="./studio.html">Solar &amp; Vault</a>
+    
+    <nav class="hidden xl:flex items-center gap-space-lg">
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="index.html">Home</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="calculator.html">Calculator</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="results.html">Results</a>
+      <a aria-current="page" class="transition-colors text-primary font-bold border-b-2 border-primary pb-1" href="heal.html">Action Plan</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="circle.html">Campus Circle</a>
+      <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors font-medium" href="studio.html">Solar & Vault</a>
     </nav>
-
-    <div class="header-actions">
-      <a class="apk-header-btn" id="installBtn" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" title="Download Android APK"><span>⬇</span><span class="apk-btn-text">Get APK</span></a>
-      <button class="profile-pill" id="profilePillBtn" type="button"><span class="profile-avatar" id="headerAvatar">A</span><span class="profile-meta"><strong id="headerUserName">Atharv</strong><small id="headerScoreMini">784 pts</small></span></button>
-      <button class="bell-button" id="nudgeBellBtn" type="button" aria-label="Open environmental nudges"><span class="bell-halo" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8.5a6 6 0 1 0-12 0c0 6.5-2.8 8.2-2.8 8.2h17.6S18 15 18 8.5Z"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg><span class="bell-badge" id="bellBadge">3</span></button>
-      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 15.1A8.4 8.4 0 0 1 8.9 3.7 8.5 8.5 0 1 0 20.3 15.1Z"/></svg></button>
-      <button class="menu-toggle-pill" id="menuDrawerToggle" aria-label="Open menu" aria-expanded="false" type="button"><span class="menu-lines"><span></span><span></span></span><span class="menu-label">Menu</span></button>
+    
+    <div class="flex items-center gap-space-xs sm:gap-space-sm">
+      <a href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-all border border-outline-variant/40" title="Download Android APK">
+        <span class="material-symbols-outlined text-[18px]">android</span>
+        <span>Get APK</span>
+      </a>
+      <button id="pwaHeaderBtn" type="button" class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-secondary-container hover:bg-secondary-fixed text-on-secondary-container font-label-md text-label-md transition-all" title="Install 1-Tap App">
+        <span class="material-symbols-outlined text-[18px]">install_mobile</span>
+        <span>Install App</span>
+      </button>
+      <a href="calculator.html" class="inline-flex items-center justify-center px-4 py-2 bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-xl shadow-sm transition-all active:scale-[0.98] font-bold">
+        Calculate
+      </a>
+      <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs text-on-primary">
+        <span class="material-symbols-outlined text-[18px]">person</span>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
+<main class="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
+<div class="flex flex-col w-full">
+<div class="max-w-[1280px] w-full mx-auto px-margin-mobile lg:px-margin py-space-xl flex flex-col gap-space-xl">
+<!-- Top Context & Goal Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Student Impact Track • Scope 3 Reductions</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Your Personalized Climate Action Plan</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Achievable, student-friendly micro-actions to reach your personal target of <span class="font-semibold text-primary">1.45 tonnes CO2e/yr</span>.</p>
+</div>
+<!-- Action Export / Sync Pill -->
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-sm rounded-xl w-fit">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Oakridge High Cohort 2025 Active</span>
+<button class="ml-space-xs text-secondary hover:text-primary transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+<!-- Overall Progress Metric Card (L1 Elevated Container) -->
+<div class="w-full bg-surface-container-lowest rounded-2xl shadow-sm p-space-lg lg:p-space-xl flex flex-col lg:flex-row items-stretch gap-space-xl relative overflow-hidden">
+<!-- Ambient Glow Subtle Gradient -->
+<div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+<!-- Left Column: Circular Progress Gauge -->
+<div class="flex items-center gap-space-lg min-w-[280px]">
+<div class="relative w-28 h-28 flex items-center justify-center flex-shrink-0">
+<svg class="w-28 h-28 transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="9"></circle>
+<circle class="text-secondary transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="143.18" stroke-linecap="round" stroke-width="9"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary leading-none">43%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-1">Complete</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">3 of 7 Actions</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-space-xs">Logged &amp; verified for this term</span>
+<span class="inline-flex items-center gap-space-xs text-secondary font-label-md text-label-md mt-space-xs">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+            On schedule for Q4 goal
+          </span>
+</div>
+</div>
+<!-- Vertical Separator (Tonal) -->
+<div class="hidden lg:block w-px bg-surface-container self-stretch"></div>
+<!-- Middle: Realized Impact Metric -->
+<div class="flex flex-col justify-center flex-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide">Impact Realized So Far</span>
+<div class="flex items-baseline gap-space-xs mt-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">165</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-medium">kg CO2e</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">committed reduction</span>
+</div>
+<!-- Linear progress bar to badge -->
+<div class="w-full mt-space-md">
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-space-xs text-on-surface-variant">
+<span>Next Milestone: Oakridge High Bronze Eco-Badge</span>
+<span class="font-semibold text-primary">5 Actions (2 to go)</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary rounded-full transition-all duration-700" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+<!-- Right: Milestone Reward Highlight Box -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between min-w-[260px]">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">military_tech</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-primary font-semibold">Bronze Eco-Badge</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">+50 Campus Merit Points unlocked upon completion</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-secondary font-label-md text-label-md">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> Active Challenge
+          </span>
+<span class="font-semibold text-primary">Stage 1 of 3</span>
+</div>
+</div>
+</div>
+<!-- Main Content Grid: Actions List (Left 8 cols) + Side Panel (Right 4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Column: Actions Section -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Filter Pills Bar -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-xs no-scrollbar" id="categoryFilterBar">
+<button class="filter-chip px-space-md py-space-xs rounded-full bg-primary-container text-on-primary font-label-md text-label-md transition-all active:scale-[0.98] shadow-sm flex-shrink-0" type="button">
+            All Actions (7)
+          </button>
+<button class="filter-chip px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all flex-shrink-0" type="button">
+            Transportation (2)
+          </button>
+<button class="filter-chip px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all flex-shrink-0" type="button">
+            Food &amp; Diet (2)
+          </button>
+<button class="filter-chip px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all flex-shrink-0" type="button">
+            Energy Saving (2)
+          </button>
+<button class="filter-chip px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md transition-all flex-shrink-0" type="button">
+            Waste &amp; Lifestyle (1)
+          </button>
+</div>
+<!-- Action Cards Container -->
+<div class="flex flex-col gap-space-md">
+<!-- Card 1: Completed / Highlight Style -->
+<div class="action-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="flex items-start gap-space-md min-w-0 flex-1 pl-space-xs">
+<label class="relative flex items-center justify-center w-6 h-6 mt-1 cursor-pointer flex-shrink-0">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-6 h-6 rounded-lg bg-secondary text-on-secondary flex items-center justify-center transition-all peer-focus:ring-2 peer-focus:ring-secondary/40">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</label>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="h-6 px-2.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm inline-flex items-center">
+                    Transportation
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm inline-flex items-center">
+                    Easy
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    -140 kg CO2e/yr
+                  </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold line-through text-on-surface-variant/70">
+                  Take the school bus or cycle 3 days a week
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Replacing two private car drop-offs with the district school bus reduces your weekly travel footprint by 35%.
+                </p>
+<div class="flex items-center gap-space-md mt-space-xs text-secondary font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Completed &amp; Verified
+                  </span>
+<span class="text-on-surface-variant">• Logged on Oct 18</span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-xs flex-shrink-0 pt-space-xs sm:pt-0">
+<span class="px-space-sm py-space-xs rounded-xl bg-surface-container-low text-secondary font-label-sm text-label-sm font-semibold">Active Streak: 4 wks</span>
+<button class="text-on-surface-variant hover:text-primary p-space-xs transition-colors rounded-lg hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Unchecked with CTA -->
+<div class="action-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative overflow-hidden group">
+<div class="flex items-start gap-space-md min-w-0 flex-1">
+<label class="relative flex items-center justify-center w-6 h-6 mt-1 cursor-pointer flex-shrink-0">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-6 h-6 rounded-lg bg-surface-container-high text-transparent peer-checked:bg-secondary peer-checked:text-on-secondary flex items-center justify-center transition-all hover:bg-surface-dim">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</label>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="h-6 px-2.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm inline-flex items-center">
+                    Waste &amp; Food
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm inline-flex items-center">
+                    Easy
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    -65 kg CO2e/yr
+                  </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">
+                  Pack a zero-waste lunchbox with reusable containers
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Eliminate single-use plastic wraps, snack pouches, and bottled beverages in the school cafeteria.
+                </p>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">eco</span>
+<span>Estimated student savings: $18/month on canteen packaging</span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-sm flex-shrink-0 pt-space-xs sm:pt-0">
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-space-md py-space-sm bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded-xl transition-all active:scale-[0.98]" type="button">
+                Mark as started
+              </button>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Takes 5 mins prep</span>
+</div>
+</div>
+<!-- Card 3: Unchecked Energy Card -->
+<div class="action-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative overflow-hidden group">
+<div class="flex items-start gap-space-md min-w-0 flex-1">
+<label class="relative flex items-center justify-center w-6 h-6 mt-1 cursor-pointer flex-shrink-0">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-6 h-6 rounded-lg bg-surface-container-high text-transparent peer-checked:bg-secondary peer-checked:text-on-secondary flex items-center justify-center transition-all hover:bg-surface-dim">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</label>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="h-6 px-2.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm inline-flex items-center">
+                    Energy
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm inline-flex items-center">
+                    Very Easy
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    -40 kg CO2e/yr
+                  </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">
+                  Switch home workspace electronics to a master switch
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Eliminate phantom vampire draw from laptop chargers, gaming consoles, and secondary displays overnight.
+                </p>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">power</span>
+<span>Direct household electricity reduction</span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-sm flex-shrink-0 pt-space-xs sm:pt-0">
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-space-md py-space-sm bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md rounded-xl transition-all active:scale-[0.98]" type="button">
+                Mark as started
+              </button>
+<span class="text-label-sm font-label-sm text-on-surface-variant">One-time setup</span>
+</div>
+</div>
+<!-- Card 4: Completed Food Card -->
+<div class="action-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary"></div>
+<div class="flex items-start gap-space-md min-w-0 flex-1 pl-space-xs">
+<label class="relative flex items-center justify-center w-6 h-6 mt-1 cursor-pointer flex-shrink-0">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="w-6 h-6 rounded-lg bg-secondary text-on-secondary flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+</label>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="h-6 px-2.5 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm inline-flex items-center">
+                    Food
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm inline-flex items-center">
+                    Medium
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    -95 kg CO2e/yr
+                  </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold line-through text-on-surface-variant/70">
+                  Participate in 'Meatless Lunch Wednesdays'
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Enjoy delicious plant-based protein meals once or twice a week at school cafeteria or lunch pack.
+                </p>
+<div class="flex items-center gap-space-md mt-space-xs text-secondary font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Completed &amp; Verified
+                  </span>
+<span class="text-on-surface-variant">• 6 consecutive weeks</span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-xs flex-shrink-0 pt-space-xs sm:pt-0">
+<span class="px-space-sm py-space-xs rounded-xl bg-surface-container-low text-secondary font-label-sm text-label-sm font-semibold">Saved 22kg this month</span>
+<button class="text-on-surface-variant hover:text-primary p-space-xs transition-colors rounded-lg hover:bg-surface-container" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 5: In Progress Challenge Card -->
+<div class="action-card bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md relative overflow-hidden group">
+<div class="flex items-start gap-space-md min-w-0 flex-1">
+<div class="w-6 h-6 mt-1 rounded-lg bg-surface-container flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">timelapse</span>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0 w-full pr-space-md">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="h-6 px-2.5 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    School Challenge
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm inline-flex items-center">
+                    Medium
+                  </span>
+<span class="h-6 px-2.5 rounded-full bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm inline-flex items-center font-semibold">
+                    -110 kg CO2e/yr
+                  </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">
+                  Join Oakridge High's 'Green Commute Challenge'
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                  Log 10 car-free commute days in October to earn 50 house points for your grade.
+                </p>
+<!-- Mini Progress Tracker inside card -->
+<div class="w-full mt-space-xs max-w-md">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span class="font-semibold text-secondary">In progress (7/10 days logged)</span>
+<span>3 days remaining</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-sm flex-shrink-0 pt-space-xs sm:pt-0">
+<button class="w-full sm:w-auto inline-flex items-center justify-center px-space-md py-space-sm bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-xl transition-all shadow-sm active:scale-[0.98]" type="button">
+                Log Commute Day
+              </button>
+<span class="text-label-sm font-label-sm text-secondary font-medium">October sprint ends in 8 days</span>
+</div>
+</div>
+</div>
+<!-- Add Custom Action Row -->
+<button class="w-full py-space-md px-space-lg rounded-2xl bg-surface-container-low hover:bg-surface-container text-primary font-label-lg text-label-lg transition-colors flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Propose or Add Custom Action for your Campus</span>
+</button>
+</div>
+<!-- Right Column: Summary & Analytics Sidebar (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Projected Savings Breakdown Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-primary tracking-tight">Your Projected Savings</h2>
+<span class="material-symbols-outlined text-surface-tint">analytics</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Completing all 7 recommended micro-habits cuts your footprint below the national student average.
+          </p>
+<!-- SVG Visual Bar Comparison Chart -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Current Campus Baseline</span>
+<span class="font-bold text-primary">1.82 t CO2e</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-secondary font-semibold">With All 7 Actions Met</span>
+<span class="font-bold text-secondary">1.37 t CO2e</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between border-t border-surface-container text-label-sm font-label-sm">
+<span class="text-on-surface-variant">Total Footprint Cut</span>
+<span class="text-secondary font-bold text-body-md">-24.7% (-450 kg)</span>
+</div>
+</div>
+<!-- Category Impact Breakdown Spark Mini List -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Breakdown by Category</span>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-space-xs text-body-sm text-body-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>Mobility &amp; Commuting</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">250 kg</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-space-xs text-body-sm text-body-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span>Plant-Rich Cafeteria Diet</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">95 kg</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-space-xs text-body-sm text-body-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-tint"></span>
+<span>Waste &amp; Zero-single-use</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">65 kg</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-space-xs text-body-sm text-body-sm text-on-surface">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span>Phantom Energy Reduction</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-semibold">40 kg</span>
+</div>
+</div>
+</div>
+<!-- Student Climate Tip Card -->
+<div class="bg-surface-container-low rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Tip of the Day</span>
+<p class="font-body-md text-body-md text-primary font-medium">
+            Keep your bike tires properly inflated to reduce pedaling effort by 15% and extend tire life across seasons.
+          </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Validated by Oakridge Bike Lab</span>
+</div>
+<!-- Classmates & Peer Invitation Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">group_add</span>
+</div>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-primary">Team Up</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Amplify collective impact</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Actions logged with 2 or more classmates earn double merit points toward your homeroom's environmental trophy.
+          </p>
+<!-- Peer Avatars Stack -->
+<div class="flex items-center gap-space-sm py-space-xs">
+<div class="flex -space-x-2 overflow-hidden">
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait photo of high school student smiling with campus greenery background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3bVNn3Rfdplvg-NdgME7V9s9M_RuwEdPJ3wMXR2kp4wNFGxswIDOFYdjXqippbDONhZeWDN2aL0Rm-8ukrKbN77nI3NHQkkdJGn2OB9j-oeb_j6Tm5sr4WVSJKrIbIXKymVs_53ZqU3U5DRrIS5z6IILPCd3znMcqastS2tV6xCktzmu6uYFyuYXZ6x2pl1D1829y2jDu_TSPQtytT6_SVoWkxyEfrh0tIWT-0eJ6"/>
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait photo of teen eco club member in a green casual sweater outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA96gU_zCNGHOssB3ajGMR2oUtPMk2eovvMQkRIg_qsIj-oimdtWswtVbouWdMptV0CUamW_mWfZX0tHs3FvcJAk06cxPbAO9GkIisold8le2prC9Yy2KGcl3ji5hV01RLlPdRVntumqwRtocqKrDk9PaB79_5EbuUJYU6YQKXCLD4LIM_66extzqNWvQfClKZwPk1eR8aBOt98Az1SWUc234nXUvYlPSD9aFPQRJx"/>
+<img class="inline-block h-8 w-8 rounded-full ring-2 ring-surface-container-lowest object-cover" data-alt="Portrait photo of high school student with glasses outdoors in morning daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGJdBenP3Fubrt-vhR13O44uOdOA_LMfzGw7mnuwPVl1RZqok5ZVMpRCSHqfj8JoArtZ08PGLN0xmaMRJnA5SXlwA7DOfIS9e9hZJSHn-dCAHcmC7DHn7f3prkTesb3o8dbmIncLqED4mjDDq3gI3xAeoebx89rZeO22MylaYNJT7J7uK_3GqcgS7NKRNlvLSmHQzgdimLh9nKxGs51_xHwlXrIRn4rQQo3riQqkVy"/>
+<div class="inline-flex h-8 w-8 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-label-sm items-center justify-center ring-2 ring-surface-container-lowest font-bold">
+                +14
+              </div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">16 classmates active today</span>
+</div>
+<a class="w-full inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-xl transition-all shadow-sm active:scale-[0.98]" href="#">
+<span>Invite classmates to action plan</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Filter pill toggles micro-interaction
+  document.querySelectorAll('#categoryFilterBar button').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelectorAll('#categoryFilterBar button').forEach(btn => {
+        btn.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        btn.classList.add('bg-surface-container-lowest', 'text-on-surface-variant');
+      });
+      this.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      this.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+    });
+  });
 
-  <main>
-    <section class="page-section section-shell">
-      <div class="page-top-banner">
+  // Dynamic checkbox state toggle demo
+  document.querySelectorAll('.action-card input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const card = this.closest('.action-card');
+      const title = card.querySelector('h3');
+      if (this.checked) {
+        title.classList.add('line-through', 'text-on-surface-variant/70');
+      } else {
+        title.classList.remove('line-through', 'text-on-surface-variant/70');
+      }
+    });
+  });
+</script>
+</main>
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/50 pt-space-xl pb-space-lg">
+  <div class="max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl pb-space-xl border-b border-outline-variant/40">
+      <div class="md:col-span-6 flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-[20px]">eco</span>
+          </div>
+          <span class="font-headline-sm text-headline-sm text-primary font-bold">CarbCalc</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Effortless daily climate care for students and campuses. Backed by verified Indian grid, transport, and solar datasets (CEA 2026, WRI India, MNRE).
+        </p>
+        <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-highest w-fit">
+          <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">MITAOE Alandi Cohort Sync • CEA 2026 Grid 0.675 kg/kWh</span>
+        </div>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Platform</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="index.html">Home</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="calculator.html">Carbon Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="results.html">Results & Benchmark</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="heal.html">Action Plan & Tree Plant</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="circle.html">Campus Challenges</a></li>
+        </ul>
+      </div>
+      <div class="md:col-span-3 flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold">Research & Downloads</span>
+        <ul class="flex flex-col gap-space-xs">
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html">PM Surya Ghar Solar Calculator</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="studio.html#vault">CEA & WRI India Research Vault</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download Android APK</a></li>
+          <li class="list-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com/PreetTank35/CarbCalc.git" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+      <p class="font-body-sm text-body-sm text-on-surface-variant">© 2026 CarbCalc Academic Initiative • MIT Academy of Engineering, Alandi.</p>
+      <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">
+        <span class="material-symbols-outlined text-[16px]">verified</span>
+        <span>GHG Protocol Scope 1-3 Youth Framework</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<nav class="xl:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-outline-variant/60 shadow-[0_-2px_12px_rgba(0,0,0,0.04)]">
+  <div class="h-16 px-space-xs flex items-center justify-around">
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="index.html"><span class="material-symbols-outlined text-[22px]">home</span><span class="text-[11px]">Home</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="calculator.html"><span class="material-symbols-outlined text-[22px]">add_chart</span><span class="text-[11px]">Calculate</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="results.html"><span class="material-symbols-outlined text-[22px]">bar_chart</span><span class="text-[11px]">Results</span></a>
+    <a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-secondary font-bold" href="heal.html"><span class="material-symbols-outlined text-[22px]">task_alt</span><span class="text-[11px] font-bold">Action</span></a>
+    <a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] gap-0.5 text-on-surface-variant transition-colors hover:text-on-surface" href="circle.html"><span class="material-symbols-outlined text-[22px]">group</span><span class="text-[11px]">Circle</span></a>
+  </div>
+</nav>
+<!-- Install Modal -->
+<div id="installModal" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-surface rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-outline-variant/60 flex flex-col gap-5 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between pb-3 border-b border-outline-variant/40">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">install_mobile</span>
+        </div>
         <div>
-          <div class="eyebrow"><span class="eyebrow-dot"></span> 02 — WAYS TO BALANCE &amp; HEAL</div>
-          <h1>Turn your footprint <em>into living shade.</em></h1>
-        </div>
-        <p class="page-top-note">Pick a daily healing action or start a real native tree check-in that grows with you week by week.</p>
-      </div>
-
-      <div class="heal-grid">
-        <div class="tree-studio-card">
-          <div class="choice-card-top">
-            <span>FEATURED CHALLENGE · PLANT A NATIVE TREE</span>
-            <span class="live-tag"><span></span> +50 SCORE · ~22 KG CO₂/YR</span>
-          </div>
-
-          <div class="tree-species-row">
-            <label class="field">
-              <span>Choose native species</span>
-              <select id="treeSpeciesSelect">
-                <option value="neem">Neem · Azadirachta indica (~22 kg/yr)</option>
-                <option value="peepal">Peepal · Ficus religiosa (~28 kg/yr)</option>
-                <option value="banyan">Banyan · Ficus benghalensis (~32 kg/yr)</option>
-                <option value="mango">Desi Mango · Mangifera indica (~20 kg/yr)</option>
-                <option value="bamboo">Bamboo Clump · Dendrocalamus (~40 kg/yr)</option>
-              </select>
-            </label>
-            <div class="tree-streak-box">
-              <span>Weekly check-ins</span>
-              <strong id="treeStreakCount">0 weeks</strong>
-            </div>
-          </div>
-
-          <div class="tree-upload-zone">
-            <canvas id="treeCanvas" width="560" height="240" class="tree-preview-canvas"></canvas>
-            <div class="tree-canvas-overlay" id="treeCanvasPlaceholder">
-              <span class="tree-icon">🌱</span>
-              <p>Take or upload a real photo of your planted sapling</p>
-              <button type="button" class="button button-primary button-small" id="uploadTreePhotoBtn">Choose / Take Photo</button>
-              <input type="file" id="treePhotoInput" accept="image/*" capture="environment" hidden>
-            </div>
-          </div>
-
-          <div class="tree-demo-presets">
-            <span>Try quick photo test:</span>
-            <button type="button" class="preset-chip" data-tree-preset="sapling">Week 1 Sapling</button>
-            <button type="button" class="preset-chip" data-tree-preset="growth">Week 2 Growth</button>
-            <button type="button" class="preset-chip" data-tree-preset="fake">Flat Screen / Fake</button>
-          </div>
-
-          <div class="tree-verification-result" id="treeVerificationResult" hidden>
-            <div class="verify-status-head"><strong id="verifyHeadline">Sapling verified</strong><span id="verifyScoreTag">+50 pts</span></div>
-            <p id="verifyDetail"></p>
-            <div class="optical-bars">
-              <span>Foliage greenness: <b id="optGreenPct">0%</b></span>
-              <span>Natural soil base: <b id="optSoilPct">0%</b></span>
-              <span>Natural texture: <b id="optTexturePct">0%</b></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="heal-actions-card">
-          <div class="heal-actions-head">
-            <div><span class="eyebrow">TODAY'S ACTIONS</span><h3>Small shifts you can do right now</h3></div>
-            <strong class="heal-done-counter"><span id="healDoneCount">0</span> / 5</strong>
-          </div>
-
-          <div class="heal-list">
-            <label class="heal-item"><input type="checkbox" data-heal="ac_fan" data-pts="20" data-kg="1.01"><span class="mission-check"></span><span class="heal-text"><b>Use ceiling fan instead of 1 hr AC</b><small>Saves ~1.01 kg CO₂ per hour on the Indian grid</small></span><span class="heal-pts">+20 pts</span></label>
-            <label class="heal-item"><input type="checkbox" data-heal="local_plate" data-pts="15" data-kg="0.38"><span class="mission-check"></span><span class="heal-text"><b>Choose local seasonal produce, zero leftovers</b><small>Cuts food-mile &amp; household waste emissions</small></span><span class="heal-pts">+15 pts</span></label>
-            <label class="heal-item"><input type="checkbox" data-heal="bus_share" data-pts="25" data-kg="0.55"><span class="mission-check"></span><span class="heal-text"><b>Take the campus bus, metro, or share your ride</b><small>Cuts per-person commute CO₂ by up to 65%</small></span><span class="heal-pts">+25 pts</span></label>
-            <label class="heal-item"><input type="checkbox" data-heal="sort_waste" data-pts="15" data-kg="0.15"><span class="mission-check"></span><span class="heal-text"><b>Separate wet kitchen scraps from dry recyclables</b><small>Stops wet waste from turning into landfill methane</small></span><span class="heal-pts">+15 pts</span></label>
-            <label class="heal-item"><input type="checkbox" data-heal="mindful_ai" data-pts="10" data-kg="0.06"><span class="mission-check"></span><span class="heal-text"><b>Batch AI questions &amp; trim auto-play HD video</b><small>Reduces distant data center cooling &amp; server load</small></span><span class="heal-pts">+10 pts</span></label>
-          </div>
+          <h3 class="text-xl font-bold text-primary">Install CarbCalc App</h3>
+          <p class="text-xs text-on-surface-variant">Choose your preferred installation method</p>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="brand footer-brand" href="./index.html"><span class="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M29.8 7.2C18.2 7.2 9 13.3 9 23.1c0 5.5 3.9 9.7 9.2 9.7 10.1 0 14.8-12.2 11.6-25.6Z"/><path d="M8.5 32.3c5.2-7.2 10.2-11.6 19.1-17"/></svg></span><span class="brand-name">carb<span>calc</span><small>PERSONAL ECO COMPANION</small></span></a>
-      <p>Live lightly. Leave more room to grow.</p>
-      <span class="footer-credit">Environmental Science · MIT Academy of Engineering, Alandi</span>
+      <button onclick="document.getElementById('installModal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
     </div>
-  </footer>
 
-  <nav class="mobile-bottom-dock" aria-label="Mobile navigation">
-    <a href="./index.html"><span>🌱</span>Home</a>
-    <a href="./dashboard.html"><span>📊</span>Rhythm</a>
-    <a href="./heal.html" class="active"><span>🌳</span>Heal</a>
-    <a href="./circle.html"><span>🤝</span>Circle</a>
-    <a href="./studio.html"><span>☀️</span>Studio</a>
-  </nav>
-
-  <div class="drawer-backdrop" id="menuDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="collapsibleMenuDrawer" role="dialog" aria-modal="true" aria-label="Navigation and Android App">
-      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> NAVIGATION</span><h3>CarbCalc Pages</h3></div><button class="drawer-close" id="menuDrawerClose" type="button">×</button></div>
-      <div class="drawer-nav-cards">
-        <a href="./index.html" class="drawer-nav-link"><span>01 · Welcome &amp; Account</span><span>→</span></a>
-        <a href="./dashboard.html" class="drawer-nav-link"><span>02 · Today's Rhythm &amp; Score</span><span>→</span></a>
-        <a href="./heal.html" class="drawer-nav-link active"><span>03 · Ways to Heal &amp; Plant a Tree</span><span>→</span></a>
-        <a href="./circle.html" class="drawer-nav-link"><span>04 · Campus Circle &amp; Earth Pulse</span><span>→</span></a>
-        <a href="./studio.html" class="drawer-nav-link"><span>05 · Solar Savings, Research Vault &amp; Journal</span><span>→</span></a>
+    <!-- Method 1: Instant 1-Tap PWA (Recommended) -->
+    <div class="p-5 rounded-2xl bg-secondary-container/30 border border-secondary/30 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-secondary text-on-secondary text-[11px] font-bold uppercase tracking-wider">Fastest & Reliable</span>
+        <span class="text-xs text-secondary font-bold">0 MB Storage</span>
       </div>
-      <div class="drawer-apk-box"><span class="eyebrow">ANDROID APPLICATION</span><p>Download the Capacitor-packaged APK build directly to your phone.</p><a class="button button-primary button-small" href="./CarbCalc-Android.apk" download="CarbCalc-Android.apk">Download CarbCalc APK ↓</a></div>
-      <div class="drawer-apk-box"><span class="eyebrow">AMBIENT NUDGES</span><p>Preview the gentle anti-doomscroll reminder overlay.</p><button type="button" class="button button-neu button-small" id="triggerOverlayNowBtn">Preview Gentle Overlay ✦</button></div>
-    </aside>
-  </div>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 1: Instant 1-Tap Web App</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Installs immediately directly to your Android/iOS home screen. Zero package parsing errors, launches in full-screen, and works 100% offline.</p>
+      </div>
+      <button onclick="triggerPwaInstall()" class="w-full py-3 rounded-xl bg-secondary text-on-secondary font-bold text-sm shadow hover:bg-secondary/90 transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">add_to_home_screen</span>
+        <span>Install to Home Screen Now</span>
+      </button>
+    </div>
 
-  <div class="drawer-backdrop" id="nudgeDrawerBackdrop" hidden>
-    <aside class="collapsible-drawer" id="nudgeDrawer" role="dialog" aria-modal="true" aria-label="Gentle notifications">
-      <div class="drawer-header"><div><span class="eyebrow"><span class="eyebrow-dot"></span> GENTLE REMINDERS</span><h3>Eco Nudges</h3></div><button class="drawer-close" id="nudgeDrawerClose" type="button">×</button></div>
-      <div class="nudge-list" id="nudgeList"></div>
-      <div class="nudge-drawer-footer"><button type="button" class="button button-primary button-small" id="nudgePreviewOverlayBtn">Experience Ambient Reminder ✦</button></div>
-    </aside>
-  </div>
-
-  <div class="ambient-overlay" id="ambientOverlay" role="dialog" aria-modal="true" aria-labelledby="ambientTitle" hidden>
-    <div class="ambient-card">
-      <div class="ambient-eyebrow"><span class="mini-pulse"></span> A GENTLE PAUSE FOR YOU</div>
-      <h2 id="ambientTitle">Quick breath, Atharv.</h2>
-      <p>On this day in 1973, villagers in Uttarakhand hugged trees to stop commercial logging — reminding us that small local courage changes national history.</p>
-      <div class="ambient-prompt-box">One gentle step right now: unplug one idle charger or step outside for 3 minutes of daylight (+15 Eco Score).</div>
-      <div class="ambient-actions"><button type="button" class="button button-primary button-small" id="ambientAcceptBtn">I'll do this now (+15 pts) ✓</button><button type="button" class="text-button" id="ambientDismissBtn">Maybe later <span>→</span></button></div>
+    <!-- Method 2: Native Android APK -->
+    <div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/60 flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <span class="px-2.5 py-0.5 rounded-full bg-surface-container-highest text-primary text-[11px] font-bold uppercase tracking-wider">Capacitor Native APK</span>
+        <span class="text-xs text-on-surface-variant font-medium">Android 7.0+</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-primary text-base">Method 2: Standalone Android APK</h4>
+        <p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Built with native Android Dalvik runtime & Capacitor. Compiled and cryptographically signed on GitHub CI.</p>
+      </div>
+      <div class="flex flex-col gap-2 pt-1">
+        <a href="https://github.com/PreetTank35/CarbCalc/releases/latest" target="_blank" class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-sm shadow hover:bg-tertiary transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span>Download Verified APK from Releases</span>
+        </a>
+        <a href="https://github.com/PreetTank35/CarbCalc/actions" target="_blank" class="w-full py-2.5 rounded-xl bg-surface-container-highest text-primary font-semibold text-xs border border-outline-variant/40 hover:bg-surface-container transition-all flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[16px]">build_circle</span>
+          <span>View GitHub Actions Build Artifacts</span>
+        </a>
+      </div>
+      <div class="bg-surface-container p-3 rounded-xl text-[11px] text-on-surface-variant space-y-1">
+        <p class="font-bold text-primary">💡 If Android shows "Problem parsing package":</p>
+        <p>1. Ensure your browser is allowed to install apps in Android Settings.</p>
+        <p>2. Download the verified APK from GitHub Releases above.</p>
+        <p>3. Tap the file in Downloads to install.</p>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="./app.js" defer></script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn').forEach(el => el.classList.add('ring-2', 'ring-secondary'));
+});
+
+function triggerPwaInstall() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+  } else {
+    alert('To install CarbCalc on your phone:\n\n1. In Chrome / Edge / Brave, tap the (⋮) menu button.\n2. Tap "Install app" or "Add to Home screen".\n3. Launches in full-screen with offline capabilities!');
+  }
+}
+
+function openInstallModal() {
+  const modal = document.getElementById('installModal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+document.querySelectorAll('#pwaInstallBtn, #pwaHeaderBtn, #pwaHeroBtn, [data-install-trigger]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openInstallModal();
+  });
+});
+</script>
 </body>
 </html>
